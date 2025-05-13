@@ -9,7 +9,8 @@
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.Button ButtonLogin;
         private System.Windows.Forms.Label labelTitle;
 
         protected override void Dispose(bool disposing)
@@ -21,8 +22,6 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
         private void InitializeComponent()
         {
             panelLogin = new Panel();
@@ -31,7 +30,8 @@
             textBoxUsername = new TextBox();
             labelPassword = new Label();
             textBoxPassword = new TextBox();
-            buttonLogin = new Button();
+            labelError = new Label();
+            ButtonLogin = new Button();
             panelLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,7 +45,8 @@
             panelLogin.Controls.Add(textBoxUsername);
             panelLogin.Controls.Add(labelPassword);
             panelLogin.Controls.Add(textBoxPassword);
-            panelLogin.Controls.Add(buttonLogin);
+            panelLogin.Controls.Add(labelError);
+            panelLogin.Controls.Add(ButtonLogin);
             panelLogin.Location = new Point(250, 100);
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(300, 280);
@@ -97,22 +98,34 @@
             textBoxPassword.TabIndex = 2;
             textBoxPassword.UseSystemPasswordChar = true;
             // 
-            // buttonLogin
+            // labelError
             // 
-            buttonLogin.BackColor = Color.Teal;
-            buttonLogin.FlatStyle = FlatStyle.Flat;
-            buttonLogin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            buttonLogin.ForeColor = Color.White;
-            buttonLogin.Location = new Point(20, 190);
-            buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(260, 35);
-            buttonLogin.TabIndex = 3;
-            buttonLogin.Text = "Giriş Yap";
-            buttonLogin.UseVisualStyleBackColor = false;
+            labelError.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            labelError.ForeColor = Color.Red;
+            labelError.Location = new Point(20, 280);
+            labelError.Name = "labelError";
+            labelError.Size = new Size(260, 20);
+            labelError.TabIndex = 6;
+            labelError.Text = "Hata mesajı buraya gelecek.";
+            labelError.Visible = false;
+            // 
+            // ButtonLogin
+            // 
+            ButtonLogin.BackColor = Color.Teal;
+            ButtonLogin.FlatStyle = FlatStyle.Flat;
+            ButtonLogin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            ButtonLogin.ForeColor = Color.White;
+            ButtonLogin.Location = new Point(20, 190);
+            ButtonLogin.Name = "ButtonLogin";
+            ButtonLogin.Size = new Size(260, 35);
+            ButtonLogin.TabIndex = 3;
+            ButtonLogin.Text = "Giriş Yap";
+            ButtonLogin.UseVisualStyleBackColor = false;
+            ButtonLogin.Click += ButtonLogin_Click;
             // 
             // GirisForm
             // 
-            AcceptButton = buttonLogin;
+            AcceptButton = ButtonLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
@@ -120,12 +133,10 @@
             Controls.Add(panelLogin);
             MaximizeBox = false;
             Name = "GirisForm";
-            Text = "Login";
+            Text = "Giriş";
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
             ResumeLayout(false);
         }
-
-        #endregion
     }
 }
