@@ -107,7 +107,7 @@
             buttonLogin.Name = "buttonLogin";
             buttonLogin.Size = new Size(260, 35);
             buttonLogin.TabIndex = 3;
-            buttonLogin.Text = "Sign In";
+            buttonLogin.Text = "Giriş Yap";
             buttonLogin.UseVisualStyleBackColor = false;
             // 
             // GirisForm
