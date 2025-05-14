@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internet_Kafe_Proje.Session;
 using Internet_Kafe_Proje.VeriTabani;
 
 namespace Internet_Kafe_Proje
@@ -35,12 +36,15 @@ namespace Internet_Kafe_Proje
 
             try
             {
-                bool canLogin = Kullanicilar.KullaniciGiris(username, password);
-                if (!canLogin)
+                var kullanici = Kullanicilar.KullaniciGiris(username, password);
+                if (kullanici == null)
                 {
                     ShowError("Giriş yapılırken bir hata ile karşılaşıldı. Lütfen tekrar deneyiniz.");
                     return;
                 }
+
+                Oturum.AktifKullanici = kullanici;
+                Console.WriteLine($"Logging in as: {kullanici.Username}");
             }
             catch
             {

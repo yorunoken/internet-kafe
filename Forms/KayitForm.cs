@@ -1,4 +1,5 @@
-﻿using Internet_Kafe_Proje.VeriTabani;
+﻿using Internet_Kafe_Proje.Session;
+using Internet_Kafe_Proje.VeriTabani;
 
 namespace Internet_Kafe_Proje.GirisFormlari
 {
@@ -32,9 +33,13 @@ namespace Internet_Kafe_Proje.GirisFormlari
 
             try
             {
-                Kullanicilar.KullaniciKayit(username, password);
-            } catch {
+                var kullanici = Kullanicilar.KullaniciKayit(username, password);
+
+                Oturum.AktifKullanici = kullanici;
+                Console.WriteLine($"Logging in as: {kullanici.Username}");
+            } catch (Exception exp) {
                 ShowError("Kayıt oluşturulurken bir hata ile karşılaşıldı. Lütfen tekrar deneyiniz.");
+                Console.WriteLine(exp.Message);
                 return;
             }
         }

@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Internet_Kafe_Proje.Session;
 
 namespace Internet_Kafe_Proje.GirisFormlari
 {
@@ -15,6 +12,21 @@ namespace Internet_Kafe_Proje.GirisFormlari
         public AnaForm()
         {
             InitializeComponent();
+
+            var kullanici = Oturum.AktifKullanici;
+            if (kullanici == null)
+            {
+                Console.WriteLine("No session initialized.");
+                return;
+            }
+
+            Console.WriteLine($"Logged in as {kullanici.Username}");
+
+            // Logic to automatically open the dashboard
+
+            // DashboardForm dashboardForm = new();
+            // dashboardForm.Show();
+            // this.Hide();
         }
 
         private void ButtonLogin_Click(object sender, EventArgs e)
