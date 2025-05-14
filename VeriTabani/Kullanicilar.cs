@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using Internet_Kafe_Proje.Utils.PasswordHelper;
+using Internet_Kafe_Proje.Utils;
 using Internet_Kafe_Proje.Session;
 
 namespace Internet_Kafe_Proje.VeriTabani

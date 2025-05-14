@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Internet_Kafe_Proje.Utils.PasswordHelper
+namespace Internet_Kafe_Proje.Utils
 {
     class PasswordHelper
     {
