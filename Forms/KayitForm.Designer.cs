@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.GirisFormlari
+﻿namespace Internet_Kafe_Proje.Forms
 {
     partial class KayitForm
     {

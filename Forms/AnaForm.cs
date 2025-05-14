@@ -1,6 +1,6 @@
 ﻿using Internet_Kafe_Proje.Session;
 
-namespace Internet_Kafe_Proje.GirisFormlari
+namespace Internet_Kafe_Proje.Forms
 {
     public partial class AnaForm: Form
     {
