@@ -1,50 +1,62 @@
 ﻿using MySql.Data.MySqlClient;
 using Internet_Kafe_Proje.Utils.PasswordHelper;
+using Internet_Kafe_Proje.Session;
 
 namespace Internet_Kafe_Proje.VeriTabani
 {
     public class Kullanicilar
     {
-        public static void KullaniciKayit(string username, string plainPassword)
+        internal static Kullanici KullaniciKayit(string username, string plainPassword)
         {
             using var databaseManager = new DatabaseManager();
 
             string hashedPassword = PasswordHelper.HashPassword(plainPassword);
 
-            string sql = "INSERT INTO users (username, password) VALUES (@username, @hashed_password)";
+            string sql = @"
+                INSERT INTO users (username, password)
+                VALUES (@username, @hashed_password);
+                SELECT LAST_INSERT_ID() AS id;
+            ";
+
             var parameters = new MySqlParameter[]
             {
                 new("@username", username),
                 new("@hashed_password", hashedPassword)
             };
 
-            databaseManager.ExecuteNonQuery(sql, parameters);
+            var resultTable = databaseManager.ExecuteQuery(sql, parameters);
+
+            int id = Convert.ToInt32(resultTable.Rows[0]["id"]);
+
+            return new Kullanici { Id = id, Username = username };
         }
 
-        public static bool KullaniciGiris(string username, string plainPassword)
+        internal static Kullanici? KullaniciGiris(string username, string plainPassword)
         {
             using var databaseManager = new DatabaseManager();
 
-            string sql = "SELECT password FROM users WHERE username = @username";
+            string sql = "SELECT id, password FROM users WHERE username = @username";
             var parameters = new MySqlParameter[]
             {
                 new("@username", username)
             };
 
-            var result = databaseManager.GetSingle(sql, parameters);
+            var result = databaseManager.ExecuteQuery(sql, parameters).Rows[0];
             if (result == null)
             {
-                return false;
+                return null;
             }
 
-
-            string? hashedPassword = Convert.ToString(result);
+            int id = Convert.ToInt32(result["id"]);
+            string? hashedPassword = Convert.ToString(result["password"]);
             if (hashedPassword == null)
             {
-                return false;
+                return null;
             }
 
-            return PasswordHelper.VerifyPassword(hashedPassword, plainPassword);
+            bool passwordCorrect = PasswordHelper.VerifyPassword(hashedPassword, plainPassword);
+
+            return passwordCorrect ? new Kullanici { Id = id, Username = username } : null;
         }
     }
 }

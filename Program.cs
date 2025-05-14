@@ -1,20 +1,29 @@
-﻿using dotenv.net;
+﻿using System.Runtime.InteropServices;
+using dotenv.net;
 using Internet_Kafe_Proje.GirisFormlari;
 
 namespace Internet_Kafe_Proje
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
         [STAThread]
         static void Main()
         {
+            // Konsol ile aç
+            AllocConsole();
+
             // .env dosyasını yükle
             DotEnv.Load();
 
-            // To customize application configuration such as set high DPI settings or default font,
+            foreach (var pair in DotEnv.Read())
+            {
+                Console.WriteLine($"Key: {pair.Key}, Value: {pair.Value}");
+            }
+
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new AnaForm());
