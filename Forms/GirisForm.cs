@@ -1,7 +1,7 @@
 ﻿using Internet_Kafe_Proje.Session;
 using Internet_Kafe_Proje.VeriTabani;
 
-namespace Internet_Kafe_Proje
+namespace Internet_Kafe_Proje.Forms
 {
     public partial class GirisForm : Form
     {
