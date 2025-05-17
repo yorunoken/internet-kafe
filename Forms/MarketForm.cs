@@ -8,7 +8,6 @@ namespace Internet_Kafe_Proje.Forms
     public partial class MarketForm: Form
     {
         private readonly Kullanici? user;
-        private decimal balance;
 
         public MarketForm()
         {
@@ -19,7 +18,7 @@ namespace Internet_Kafe_Proje.Forms
             {
                 MessageBoxes.ErrorBox("Aktif bir oturum bulunmamaktadır. Lütfen giriş yapın.");
                 return;
-            } 
+            }
 
             labelWelcome.Text = $"Hoşgeldin, {user.Username}";
 
@@ -29,21 +28,22 @@ namespace Internet_Kafe_Proje.Forms
 
         private void UpdateBalanceLabel()
         {
-            labelBalance.Text = $"Bakiyen: {balance}₺";
+            labelBalance.Text = $"Bakiyen: {user!.Balance}₺";
         }
 
         private void LoadItems()
         {
-            var items = new List<(string name, decimal price)>();
+            var items = new List<(string name, decimal price, int id)>();
 
             foreach (DataRow row in Itemler.GetAllItems().Rows)
             {
                 string name = Convert.ToString(row["name"]) ?? "";
                 decimal price = Convert.ToDecimal(row["price"]);
-                items.Add((name, price));   
+                int id = Convert.ToInt32(row["id"]);
+                items.Add((name, price, id));   
             }
 
-            foreach (var (name, price) in items)
+            foreach (var (name, price, id) in items)
             {
                 var itemPanel = new Panel
                 {
@@ -79,15 +79,15 @@ namespace Internet_Kafe_Proje.Forms
 
                 buyButton.Click += (s, e) =>
                 {
-                    if (balance >= price)
+                    try
                     {
-                        balance -= price;
+                        Kullanicilar.PurchaseItem(user!, id);
                         UpdateBalanceLabel();
-                        MessageBox.Show($"{name} satın alındı!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBoxes.SuccessBox($"{name} satın alındı!");
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Yetersiz bakiye!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxes.ErrorBox(ex.Message);
                     }
                 };
 

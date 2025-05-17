@@ -12,5 +12,10 @@ namespace Internet_Kafe_Proje.Utils
         {
             MessageBox.Show(errorDesc, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        static internal void SuccessBox(string successDesc)
+        {
+            MessageBox.Show(successDesc, "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
