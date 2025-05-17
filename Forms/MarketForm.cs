@@ -81,7 +81,7 @@ namespace Internet_Kafe_Proje.Forms
                 {
                     try
                     {
-                        Kullanicilar.PurchaseItem(user!, id);
+                        Kullanicilar.OrderItem(user!, id);
                         UpdateBalanceLabel();
                         MessageBoxes.SuccessBox($"{name} satın alındı!");
                     }

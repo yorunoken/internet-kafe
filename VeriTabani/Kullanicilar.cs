@@ -64,20 +64,30 @@ namespace Internet_Kafe_Proje.VeriTabani
             return passwordCorrect ? new Kullanici { Id = id, Username = username, Balance = balance } : null;
         }
 
-        internal static void PurchaseItem(Kullanici user, int itemId)
+        internal static void OrderItem(Kullanici user, int itemId)
         {
             using var databaseManager = new DatabaseManager();
 
+            // Eşyanın fiyatını al
             string getItemSql = "SELECT price FROM items WHERE id = @itemId";
             var priceObj = databaseManager.GetSingle(getItemSql, new MySqlParameter("@itemId", itemId));
             if (priceObj == null)
             {
                 throw new Exception("Ürün bulunamadı.");
             }
-
             decimal price = Convert.ToDecimal(priceObj);
 
-            if (user.Balance < price)
+            // Kullanıcının güncel parasını al
+            string getBalanceSql = "SELECT balance FROM users WHERE id = @userId";
+            var balanceObj = databaseManager.GetSingle(getBalanceSql, new MySqlParameter("@userId", user.Id));
+            if (balanceObj == null)
+            {
+                throw new Exception("Kullanıcı bulunamadı.");
+            }
+            int userBalance = Convert.ToInt32(balanceObj);
+
+            // Eğer kullanıcının güncel parası eşyanın parasından az ise, hata ver
+            if (userBalance < price)
             {
                 throw new Exception("Yetersiz bakiye.");
             }
@@ -88,31 +98,15 @@ namespace Internet_Kafe_Proje.VeriTabani
                 new MySqlParameter("@userId", user.Id)
             );
 
-            string checkInventorySql = "SELECT id, quantity FROM user_items WHERE user_id = @userId AND item_id = @itemId";
-            var inventoryTable = databaseManager.ExecuteQuery(checkInventorySql,
+            string insertOrderSql = @"
+                INSERT INTO orders (user_id, item_id)
+                VALUES (@userId, @itemId);
+            ";
+
+            databaseManager.ExecuteNonQuery(insertOrderSql,
                 new MySqlParameter("@userId", user.Id),
                 new MySqlParameter("@itemId", itemId)
             );
-
-            if (inventoryTable.Rows.Count > 0)
-            {
-                int currentQty = Convert.ToInt32(inventoryTable.Rows[0]["quantity"]);
-                int inventoryId = Convert.ToInt32(inventoryTable.Rows[0]["id"]);
-
-                string updateQtySql = "UPDATE user_items SET quantity = @qty WHERE id = @id";
-                databaseManager.ExecuteNonQuery(updateQtySql,
-                    new MySqlParameter("@qty", currentQty + 1),
-                    new MySqlParameter("@id", inventoryId)
-                );
-            }
-            else
-            {
-                string insertItemSql = "INSERT INTO user_items (user_id, item_id, quantity) VALUES (@userId, @itemId, 1)";
-                databaseManager.ExecuteNonQuery(insertItemSql,
-                    new MySqlParameter("@userId", user.Id),
-                    new MySqlParameter("@itemId", itemId)
-                );
-            }
 
             user.Balance -= price;
         }
