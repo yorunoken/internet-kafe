@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using dotenv.net;
-using Internet_Kafe_Proje.GirisFormlari;
+using Internet_Kafe_Proje.Forms;
 
 namespace Internet_Kafe_Proje
 {

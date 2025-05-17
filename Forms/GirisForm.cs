@@ -27,7 +27,7 @@ namespace Internet_Kafe_Proje.Forms
 
             try
             {
-                var kullanici = Kullanicilar.KullaniciGiris(username, password);
+                var kullanici = Kullanicilar.UserLogin(username, password);
                 if (kullanici == null)
                 {
                     ShowError("Giriş yapılırken bir hata ile karşılaşıldı. Lütfen tekrar deneyiniz.");
@@ -36,6 +36,10 @@ namespace Internet_Kafe_Proje.Forms
 
                 Oturum.AktifKullanici = kullanici;
                 Console.WriteLine($"Logging in as: {kullanici.Username}");
+
+                var marketForm = new MarketForm();
+                marketForm.Show();
+                this.Hide();
             }
             catch
             {
