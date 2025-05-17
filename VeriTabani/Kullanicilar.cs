@@ -4,9 +4,11 @@ using Internet_Kafe_Proje.Session;
 
 namespace Internet_Kafe_Proje.VeriTabani
 {
-    public class Kullanicilar
+    internal class Kullanicilar
     {
-        internal static Kullanici KullaniciKayit(string username, string plainPassword)
+        private const decimal DefaultBalance = 0.0M;
+
+        internal static Kullanici UserSignup(string username, string plainPassword)
         {
             using var databaseManager = new DatabaseManager();
 
@@ -28,14 +30,14 @@ namespace Internet_Kafe_Proje.VeriTabani
 
             int id = Convert.ToInt32(resultTable.Rows[0]["id"]);
 
-            return new Kullanici { Id = id, Username = username };
+            return new Kullanici { Id = id, Username = username, Balance = DefaultBalance };
         }
 
-        internal static Kullanici? KullaniciGiris(string username, string plainPassword)
+        internal static Kullanici? UserLogin(string username, string plainPassword)
         {
             using var databaseManager = new DatabaseManager();
 
-            string sql = "SELECT id, password FROM users WHERE username = @username";
+            string sql = "SELECT id, password, balance FROM users WHERE username = @username";
             var parameters = new MySqlParameter[]
             {
                 new("@username", username)
@@ -48,6 +50,7 @@ namespace Internet_Kafe_Proje.VeriTabani
             }
 
             int id = Convert.ToInt32(result["id"]);
+            decimal balance = Convert.ToDecimal(result["balance"]);
             string? hashedPassword = Convert.ToString(result["password"]);
             if (hashedPassword == null)
             {
@@ -56,7 +59,7 @@ namespace Internet_Kafe_Proje.VeriTabani
 
             bool passwordCorrect = PasswordHelper.VerifyPassword(hashedPassword, plainPassword);
 
-            return passwordCorrect ? new Kullanici { Id = id, Username = username } : null;
+            return passwordCorrect ? new Kullanici { Id = id, Username = username, Balance = balance } : null;
         }
     }
 }

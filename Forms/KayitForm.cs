@@ -33,7 +33,7 @@ namespace Internet_Kafe_Proje.Forms
 
             try
             {
-                var kullanici = Kullanicilar.KullaniciKayit(username, password);
+                var kullanici = Kullanicilar.UserSignup(username, password);
 
                 Oturum.AktifKullanici = kullanici;
                 Console.WriteLine($"Logging in as: {kullanici.Username}");
