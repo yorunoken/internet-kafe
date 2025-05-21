@@ -5,7 +5,7 @@ using Internet_Kafe_Proje.VeriTabani;
 
 namespace Internet_Kafe_Proje.Forms
 {
-    public partial class MarketForm: Form
+    public partial class MarketForm : Form
     {
         private readonly Kullanici? user;
 
@@ -40,7 +40,7 @@ namespace Internet_Kafe_Proje.Forms
                 string name = Convert.ToString(row["name"]) ?? "";
                 decimal price = Convert.ToDecimal(row["price"]);
                 int id = Convert.ToInt32(row["id"]);
-                items.Add((name, price, id));   
+                items.Add((name, price, id));
             }
 
             foreach (var (name, price, id) in items)
@@ -96,6 +96,14 @@ namespace Internet_Kafe_Proje.Forms
                 itemPanel.Controls.Add(buyButton);
                 panelItems.Controls.Add(itemPanel);
             }
+        }
+
+        private void MoneyBuyButton_Click(object sender, EventArgs e)
+        {
+            var bakiyeYuklemeForm = new BakiyeYuklemeForm();
+            this.Hide();
+
+            bakiyeYuklemeForm.Show();
         }
     }
 }

@@ -110,5 +110,23 @@ namespace Internet_Kafe_Proje.VeriTabani
 
             user.Balance -= price;
         }
+    
+        internal static void UpdateBalance(Kullanici user)
+        {
+            using var databaseManager = new DatabaseManager();
+
+            string sql = @"
+                UPDATE users SET balance = @newBalance WHERE id = @userId;
+            "
+            ;
+
+            var parameters = new MySqlParameter[]
+            {
+                new("@newBalance", user.Balance),
+                new("@userId", user.Id)
+            };
+
+            databaseManager.ExecuteNonQuery(sql, parameters);
+        }
     }
 }
