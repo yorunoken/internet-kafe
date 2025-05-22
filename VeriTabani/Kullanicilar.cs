@@ -30,14 +30,14 @@ namespace Internet_Kafe_Proje.VeriTabani
 
             int id = Convert.ToInt32(resultTable.Rows[0]["id"]);
 
-            return new Kullanici { Id = id, Username = username, Balance = DefaultBalance };
+            return new Kullanici { Id = id, Username = username, Balance = DefaultBalance, IsAdmin = false };
         }
 
-        internal static Kullanici? UserLogin(string username, string plainPassword)
+        internal static Kullanici? UserLogin(string username, string plainPassword, bool isAdminLogin)
         {
             using var databaseManager = new DatabaseManager();
 
-            string sql = "SELECT id, password, balance FROM users WHERE username = @username";
+            string sql = "SELECT id, password, balance, is_admin FROM users WHERE username = @username";
             var parameters = new MySqlParameter[]
             {
                 new("@username", username)
@@ -53,6 +53,7 @@ namespace Internet_Kafe_Proje.VeriTabani
 
             int id = Convert.ToInt32(result["id"]);
             decimal balance = Convert.ToDecimal(result["balance"]);
+            bool isAdminFromDb = Convert.ToBoolean(result["is_admin"]);
             string? hashedPassword = Convert.ToString(result["password"]);
             if (hashedPassword == null)
             {
@@ -61,7 +62,7 @@ namespace Internet_Kafe_Proje.VeriTabani
 
             bool passwordCorrect = PasswordHelper.VerifyPassword(hashedPassword, plainPassword);
 
-            return passwordCorrect ? new Kullanici { Id = id, Username = username, Balance = balance } : null;
+            return passwordCorrect ? new Kullanici { Id = id, Username = username, Balance = balance, IsAdmin = isAdminFromDb && isAdminLogin } : null;
         }
 
         internal static void OrderItem(Kullanici user, int itemId)
