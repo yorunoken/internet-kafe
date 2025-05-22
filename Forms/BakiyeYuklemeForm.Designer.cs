@@ -112,6 +112,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
             Name = "BakiyeYuklemeForm";

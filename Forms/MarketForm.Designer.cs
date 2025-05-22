@@ -68,6 +68,8 @@ namespace Internet_Kafe_Proje.Forms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Controls.Add(MoneyBuyButton);
             Controls.Add(labelWelcome);
             Controls.Add(labelBalance);

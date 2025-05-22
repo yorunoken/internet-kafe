@@ -162,6 +162,8 @@
             // 
             AcceptButton = ButtonRegister;
             AutoScaleDimensions = new SizeF(7F, 15F);
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(800, 450);

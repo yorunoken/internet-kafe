@@ -36,6 +36,7 @@
             checkBoxAdmin = new CheckBox();
             panelLogin.SuspendLayout();
             SuspendLayout();
+
             // 
             // panelLogin
             // 
@@ -139,6 +140,8 @@
             // GirisForm
             // 
             AcceptButton = ButtonLogin;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Internet_Kafe_Proje.Forms
+﻿namespace Internet_Kafe_Proje.Forms.Admin
 {
     public partial class AdminDashboard: Form
     {
@@ -16,5 +6,21 @@ namespace Internet_Kafe_Proje.Forms
         {
             InitializeComponent();
         }
+
+
+        // Button animations
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Button btn)
+                btn.BackColor = Color.DarkCyan;
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button btn)
+                btn.BackColor = Color.Teal;
+        }
+
     }
 }

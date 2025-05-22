@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms
+﻿namespace Internet_Kafe_Proje.Forms.Admin
 {
     partial class AdminDashboard
     {
@@ -12,90 +12,100 @@
 
         private void InitializeComponent()
         {
-            panelDashboard = new Panel();
-            labelTitle = new Label();
-            buttonUsers = new Button();
-            buttonItems = new Button();
-            buttonOrders = new Button();
+            this.panelDashboard = new System.Windows.Forms.Panel();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.buttonUsers = new System.Windows.Forms.Button();
+            this.buttonItems = new System.Windows.Forms.Button();
+            this.buttonOrders = new System.Windows.Forms.Button();
+
+            this.SuspendLayout();
+            this.panelDashboard.SuspendLayout();
+
+            // 
+            // AdminDashboard (Form)
+            // 
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.BackColor = System.Drawing.Color.LightGray;
+            this.Text = "Admin Panel";
 
             // 
             // panelDashboard
             // 
-            panelDashboard.Dock = DockStyle.Fill;
-            panelDashboard.BackColor = Color.FromArgb(245, 245, 245);
-            panelDashboard.Controls.Add(labelTitle);
-            panelDashboard.Controls.Add(buttonUsers);
-            panelDashboard.Controls.Add(buttonItems);
-            panelDashboard.Controls.Add(buttonOrders);
-            Controls.Add(panelDashboard);
+            this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDashboard.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelDashboard.Controls.Add(this.labelTitle);
+            this.panelDashboard.Controls.Add(this.buttonUsers);
+            this.panelDashboard.Controls.Add(this.buttonItems);
+            this.panelDashboard.Controls.Add(this.buttonOrders);
 
             // 
             // labelTitle
             // 
-            labelTitle.Text = "Yönetici Paneli";
-            labelTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            labelTitle.ForeColor = Color.DarkSlateGray;
-            labelTitle.AutoSize = false;
-            labelTitle.TextAlign = ContentAlignment.MiddleCenter;
-            labelTitle.Dock = DockStyle.Top;
-            labelTitle.Height = 80;
+            this.labelTitle.Text = "Yönetici Paneli";
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.labelTitle.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTitle.Height = 70;
 
             // 
             // buttonUsers
             // 
-            buttonUsers.Text = "Kullanıcıları Yönet";
-            buttonUsers.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            buttonUsers.BackColor = Color.Teal;
-            buttonUsers.ForeColor = Color.White;
-            buttonUsers.FlatStyle = FlatStyle.Flat;
-            buttonUsers.FlatAppearance.BorderSize = 0;
-            buttonUsers.Size = new Size(220, 55);
-            buttonUsers.Location = new Point((800 - 220) / 2, 120);
-            buttonUsers.Cursor = Cursors.Hand;
-            buttonUsers.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonUsers.Width, buttonUsers.Height, 10, 10));
-            buttonUsers.MouseEnter += (s, e) => buttonUsers.BackColor = Color.DarkCyan;
-            buttonUsers.MouseLeave += (s, e) => buttonUsers.BackColor = Color.Teal;
+            this.buttonUsers.Text = "Kullanıcıları Yönet";
+            this.buttonUsers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.buttonUsers.BackColor = System.Drawing.Color.Teal;
+            this.buttonUsers.ForeColor = System.Drawing.Color.White;
+            this.buttonUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUsers.FlatAppearance.BorderSize = 0;
+            this.buttonUsers.Size = new System.Drawing.Size(220, 55);
+            this.buttonUsers.Location = new System.Drawing.Point((800 - 220) / 2, 100);
+            this.buttonUsers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonUsers.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 220, 55, 10, 10));
+            buttonUsers.MouseEnter += Button_MouseEnter;
+            buttonUsers.MouseLeave += Button_MouseLeave;
 
             // 
             // buttonItems
             // 
-            buttonItems.Text = "Ürünleri Yönet";
-            buttonItems.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            buttonItems.BackColor = Color.Teal;
-            buttonItems.ForeColor = Color.White;
-            buttonItems.FlatStyle = FlatStyle.Flat;
-            buttonItems.FlatAppearance.BorderSize = 0;
-            buttonItems.Size = new Size(220, 55);
-            buttonItems.Location = new Point((800 - 220) / 2, 200);
-            buttonItems.Cursor = Cursors.Hand;
-            buttonItems.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonItems.Width, buttonItems.Height, 10, 10));
-            buttonItems.MouseEnter += (s, e) => buttonItems.BackColor = Color.DarkCyan;
-            buttonItems.MouseLeave += (s, e) => buttonItems.BackColor = Color.Teal;
+            this.buttonItems.Text = "Ürünleri Yönet";
+            this.buttonItems.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.buttonItems.BackColor = System.Drawing.Color.Teal;
+            this.buttonItems.ForeColor = System.Drawing.Color.White;
+            this.buttonItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItems.FlatAppearance.BorderSize = 0;
+            this.buttonItems.Size = new System.Drawing.Size(220, 55);
+            this.buttonItems.Location = new System.Drawing.Point((800 - 220) / 2, 180);
+            this.buttonItems.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonItems.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 220, 55, 10, 10));
+            buttonItems.MouseEnter += Button_MouseEnter;
+            buttonItems.MouseLeave += Button_MouseLeave;
 
             // 
             // buttonOrders
             // 
-            buttonOrders.Text = "Siparişleri Yönet";
-            buttonOrders.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            buttonOrders.BackColor = Color.Teal;
-            buttonOrders.ForeColor = Color.White;
-            buttonOrders.FlatStyle = FlatStyle.Flat;
-            buttonOrders.FlatAppearance.BorderSize = 0;
-            buttonOrders.Size = new Size(220, 55);
-            buttonOrders.Location = new Point((800 - 220) / 2, 280);
-            buttonOrders.Cursor = Cursors.Hand;
-            buttonOrders.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, buttonOrders.Width, buttonOrders.Height, 10, 10));
-            buttonOrders.MouseEnter += (s, e) => buttonOrders.BackColor = Color.DarkCyan;
-            buttonOrders.MouseLeave += (s, e) => buttonOrders.BackColor = Color.Teal;
+            this.buttonOrders.Text = "Siparişleri Yönet";
+            this.buttonOrders.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.buttonOrders.BackColor = System.Drawing.Color.Teal;
+            this.buttonOrders.ForeColor = System.Drawing.Color.White;
+            this.buttonOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOrders.FlatAppearance.BorderSize = 0;
+            this.buttonOrders.Size = new System.Drawing.Size(220, 55);
+            this.buttonOrders.Location = new System.Drawing.Point((800 - 220) / 2, 260);
+            this.buttonOrders.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonOrders.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 220, 55, 10, 10));
+            buttonOrders.MouseEnter += Button_MouseEnter;
+            buttonOrders.MouseLeave += Button_MouseLeave;
 
             // 
-            // AdminDashboard
+            // Add panel to form
             // 
-            ClientSize = new Size(800, 450);
-            Text = "Yönetici Paneli";
-            StartPosition = FormStartPosition.CenterScreen;
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
+            this.Controls.Add(this.panelDashboard);
+
+            this.panelDashboard.ResumeLayout(false);
+            this.ResumeLayout(false);
         }
 
         [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -104,6 +114,5 @@
             int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse
         );
-
     }
 }
