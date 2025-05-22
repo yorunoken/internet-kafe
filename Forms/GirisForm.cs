@@ -27,7 +27,9 @@ namespace Internet_Kafe_Proje.Forms
 
             try
             {
-                var kullanici = Kullanicilar.UserLogin(username, password);
+                bool isAdminLogin = checkBoxAdmin.Checked;
+
+                var kullanici = Kullanicilar.UserLogin(username, password, isAdminLogin);
                 if (kullanici == null)
                 {
                     ShowError("Giriş yapılırken bir hata ile karşılaşıldı. Lütfen tekrar deneyiniz.");
@@ -35,10 +37,19 @@ namespace Internet_Kafe_Proje.Forms
                 }
 
                 Oturum.AktifKullanici = kullanici;
-                Console.WriteLine($"Logging in as: {kullanici.Username}");
+                Console.WriteLine($"Logging in as: {kullanici.Username}, admin mode: {(kullanici.IsAdmin ? "enabled" : "disabled")}");
 
-                var marketForm = new MarketForm();
-                marketForm.Show();
+                if (kullanici.IsAdmin)
+                {
+                    var adminDashboardForm = new AdminDashboard();
+                    adminDashboardForm.Show();
+                }
+                else
+                {
+                    var marketForm = new MarketForm();
+                    marketForm.Show();
+                }
+
                 this.Hide();
             }
             catch

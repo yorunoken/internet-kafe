@@ -12,6 +12,7 @@
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Button ButtonLogin;
         private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.CheckBox checkBoxAdmin;
 
         protected override void Dispose(bool disposing)
         {
@@ -32,6 +33,7 @@
             textBoxPassword = new TextBox();
             labelError = new Label();
             ButtonLogin = new Button();
+            checkBoxAdmin = new CheckBox();
             panelLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,6 +49,7 @@
             panelLogin.Controls.Add(textBoxPassword);
             panelLogin.Controls.Add(labelError);
             panelLogin.Controls.Add(ButtonLogin);
+            panelLogin.Controls.Add(checkBoxAdmin);
             panelLogin.Location = new Point(250, 100);
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(300, 280);
@@ -122,6 +125,16 @@
             ButtonLogin.Text = "Giriş Yap";
             ButtonLogin.UseVisualStyleBackColor = false;
             ButtonLogin.Click += ButtonLogin_Click;
+            //
+            // checkBoxAdmin
+            //
+            checkBoxAdmin.Font = new Font("Segoe UI", 9F);
+            checkBoxAdmin.Location = new Point(20, 170);
+            checkBoxAdmin.Name = "checkBoxAdmin";
+            checkBoxAdmin.Size = new Size(260, 20);
+            checkBoxAdmin.TabIndex = 4;
+            checkBoxAdmin.Text = "Yönetici olarak giriş yap";
+            checkBoxAdmin.UseVisualStyleBackColor = true;
             // 
             // GirisForm
             // 
