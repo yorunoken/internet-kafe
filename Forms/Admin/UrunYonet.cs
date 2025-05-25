@@ -8,15 +8,17 @@ namespace Internet_Kafe_Proje.Forms.Admin
         public UrunYonet()
         {
             InitializeComponent();
-            LoadItems();
+            LoadItems(); // Form açılırken ürünleri yükle
         }
 
+        // Ürünleri DataGridView'e yükler
         private void LoadItems()
         {
-            var items = Items.GetAllItems(); // You need to implement Items class
+            var items = Items.GetAllItems();
             dataGridViewItems.DataSource = items;
         }
 
+        // Tablo satırı seçildiğinde textbox'lara verileri aktarır
         private void SelectedDataGrid(object sender, EventArgs e)
         {
             if (dataGridViewItems.SelectedRows.Count > 0)
@@ -27,6 +29,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Yeni ürün ekler
         private void CreateItem(object sender, EventArgs e)
         {
             string name = textBoxItemName.Text;
@@ -37,6 +40,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             MessageBoxes.Success("Ürün eklendi.");
         }
 
+        // Seçili ürünü günceller
         private void UpdateItem(object sender, EventArgs e)
         {
             if (dataGridViewItems.SelectedRows.Count > 0)
@@ -59,6 +63,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Seçili ürünü siler
         private void DeleteItem(object sender, EventArgs e)
         {
             if (dataGridViewItems.SelectedRows.Count > 0)
@@ -70,6 +75,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Formdaki alanları temizler
         private void ClearFields(object sender, EventArgs e)
         {
             textBoxItemName.Text = string.Empty;
@@ -77,6 +83,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             dataGridViewItems.ClearSelection();
         }
 
+        // Yenile butonu için
         private void Refresh_Click(object sender, EventArgs e)
         {
             LoadItems();
@@ -84,7 +91,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-
+            // Geri butonu için kod eklenebilir
         }
     }
 }

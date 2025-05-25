@@ -14,6 +14,7 @@ namespace Internet_Kafe_Proje.Database
 
     internal class Orders
     {
+        // Tüm siparişleri getirir (SELECT * FROM orders)
         internal static DataTable GetAllOrders()
         {
             using var databaseManager = new DatabaseManager();
@@ -24,6 +25,7 @@ namespace Internet_Kafe_Proje.Database
             return resultTable;
         }
 
+        // Yeni sipariş ekler (INSERT INTO orders)
         internal static void InsertOrder(int userId, int itemId, int quantity = 1)
         {
             using var databaseManager = new DatabaseManager();
@@ -43,6 +45,7 @@ namespace Internet_Kafe_Proje.Database
             databaseManager.ExecuteNonQuery(sql, parameters);
         }
 
+        // Siparişi id ile siler (DELETE FROM orders WHERE id = ...)
         internal static void DeleteOrderById(int id)
         {
             using var databaseManager = new DatabaseManager();
@@ -59,6 +62,7 @@ namespace Internet_Kafe_Proje.Database
             databaseManager.ExecuteNonQuery(sql, parameters);
         }
 
+        // Sipariş bilgilerini günceller (UPDATE orders SET ...)
         internal static void UpdateOrder(OrderUpdateArgs order)
         {
             using var databaseManager = new DatabaseManager();
@@ -66,6 +70,7 @@ namespace Internet_Kafe_Proje.Database
             var updates = new List<string>();
             var parameters = new List<MySqlParameter>();
 
+            // Sadece verilen alanlar güncellenir
             if (order.UserId.HasValue)
             {
                 updates.Add("user_id = @user_id");
@@ -92,7 +97,7 @@ namespace Internet_Kafe_Proje.Database
 
             if (updates.Count == 0)
             {
-                throw new ArgumentException("No fields provided to update.");
+                throw new ArgumentException("Güncellenecek alan yok.");
             }
 
             string sql = @$"

@@ -8,9 +8,10 @@ namespace Internet_Kafe_Proje.Forms.Admin
         public SiparisYonet()
         {
             InitializeComponent();
-            LoadOrders();
+            LoadOrders(); // Form açılırken siparişleri yükle
         }
 
+        // Siparişleri tabloya yükler
         private void Refresh_Click(object sender, EventArgs e)
         {
             LoadOrders();
@@ -23,6 +24,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             dataGridViewOrders.ClearSelection();
         }
 
+        // Tablo satırı seçilince textbox'lara aktarır
         private void SelectedDataGrid(object sender, EventArgs e)
         {
             if (dataGridViewOrders.SelectedRows.Count > 0)
@@ -35,6 +37,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Seçili siparişi günceller
         private void UpdateOrder(object sender, EventArgs e)
         {
             if (dataGridViewOrders.SelectedRows.Count == 0)
@@ -71,6 +74,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Seçili siparişi siler
         private void DeleteOrder(object sender, EventArgs e)
         {
             if (dataGridViewOrders.SelectedRows.Count == 0)
@@ -94,6 +98,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Alanları temizler
         private void ClearFields(object sender, EventArgs e)
         {
             textBoxUserId.Text = string.Empty;

@@ -8,9 +8,10 @@ namespace Internet_Kafe_Proje.Forms.Admin
         public KullaniciYonet()
         {
             InitializeComponent();
-            LoadUsers();
+            LoadUsers(); // Form açılırken kullanıcıları yükle
         }
 
+        // Kullanıcıları tabloya yükler
         private void Refresh_Click(object sender, EventArgs e)
         {
             LoadUsers();
@@ -22,6 +23,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             dataGridViewUsers.DataSource = users;
         }
 
+        // Tablo satırı seçilince textbox'lara aktarır
         private void SelectedDataGrid(object sender, EventArgs e)
         {
             if (dataGridViewUsers.SelectedRows.Count > 0)
@@ -34,6 +36,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Yeni kullanıcı ekler
         private void CreateUser(object sender, EventArgs e)
         {
             string username = textBoxUsername.Text.ToString();
@@ -53,6 +56,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Seçili kullanıcıyı siler
         private void DeleteUser(object sender, EventArgs e)
         {
             if (dataGridViewUsers.SelectedRows.Count > 0)
@@ -70,6 +74,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Seçili kullanıcıyı günceller
         private void UpdateUser(object sender, EventArgs e)
         {
             if (dataGridViewUsers.SelectedRows.Count > 0)
@@ -92,6 +97,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Alanları temizler
         private void ClearSelection(object sender, EventArgs e)
         {
             textBoxUsername.Text = string.Empty;
@@ -101,6 +107,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             dataGridViewUsers.ClearSelection();
         }
 
+        // Seçili kullanıcıya ekstra süre ekler
         private void ButtonAddTime_Click(object sender, EventArgs e)
         {
             if (dataGridViewUsers.SelectedRows.Count == 0)
@@ -120,11 +127,8 @@ namespace Internet_Kafe_Proje.Forms.Admin
 
             try
             {
-                // Assuming you have a method in your Users class to add time, like this:
                 Users.AddSessionTime(userId, TimeSpan.FromMinutes(extraMinutes));
                 MessageBoxes.Success($"Kullanıcının süresine {extraMinutes} dakika eklendi.");
-
-                // Optionally refresh user list or selected data
                 LoadUsers();
             }
             catch (Exception ex)
@@ -133,6 +137,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             }
         }
 
+        // Geri butonu
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();

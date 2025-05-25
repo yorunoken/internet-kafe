@@ -8,6 +8,7 @@ namespace Internet_Kafe_Proje.Database
     {
         private const decimal DEFAULT_BALANCE = 0.0M;
 
+        // Tüm kullanıcıları veritabanından çeker ve Kullanici listesi olarak döndürür
         internal static List<Kullanici> GetAllUsers()
         {
             using var databaseManager = new DatabaseManager();
@@ -17,6 +18,7 @@ namespace Internet_Kafe_Proje.Database
 
             var users = new List<Kullanici>();
 
+            // Her satırı Kullanici nesnesine çevirip listeye ekler
             foreach (System.Data.DataRow row in resultTable.Rows)
             {
                 var user = new Kullanici
@@ -36,6 +38,7 @@ namespace Internet_Kafe_Proje.Database
             return users;
         }
 
+        // Yeni kullanıcı kaydı oluşturur, şifreyi hashler ve benzersiz kullanıcı adı kontrolü yapar
         internal static Kullanici UserSignup(string username, string plainPassword, decimal? startingBalance = null, bool? isAdmin = null)
         {
             if (string.IsNullOrEmpty(username))
@@ -50,7 +53,7 @@ namespace Internet_Kafe_Proje.Database
 
             using var databaseManager = new DatabaseManager();
 
-            // Check if username exits
+            // Kullanıcı adı daha önce alınmış mı kontrolü
             object usrnm = databaseManager.GetSingle("SELECT username FROM users WHERE username = @u", new MySqlParameter("@u", username));
             if (usrnm != null)
             {
@@ -80,6 +83,7 @@ namespace Internet_Kafe_Proje.Database
             return new Kullanici { Id = id, Username = username, Balance = startingBalance ?? DEFAULT_BALANCE, IsAdmin = false };
         }
 
+        // Kullanıcı girişi yapar, şifreyi doğrular ve admin girişi ise kontrol eder
         internal static Kullanici? UserLogin(string username, string plainPassword, bool isAdminLogin)
         {
             using var databaseManager = new DatabaseManager();
@@ -105,6 +109,7 @@ namespace Internet_Kafe_Proje.Database
                 return null;
             }
 
+            // Şifreyi kontrol et
             bool passwordCorrect = PasswordHelper.VerifyPassword(hashedPassword, plainPassword);
 
             if (!passwordCorrect)
@@ -116,6 +121,7 @@ namespace Internet_Kafe_Proje.Database
                 ? (DateTime?)null
                 : Convert.ToDateTime(result["session_end_time"]);
 
+            // Admin girişi ise ve kullanıcı admin değilse giriş başarısız olur
             return new Kullanici
             {
                 Id = id,
@@ -126,6 +132,7 @@ namespace Internet_Kafe_Proje.Database
             };
         }
 
+        // Kullanıcıyı id ile siler
         internal static void DeleteUserById(int id)
         {
             using var databaseManager = new DatabaseManager();
@@ -135,6 +142,7 @@ namespace Internet_Kafe_Proje.Database
             databaseManager.ExecuteNonQuery(sql, parameter);
         }
 
+        // Kullanıcı bilgilerini günceller, şifre değişikliği varsa hashler
         internal static void UpdateUser(int id, string username, decimal balance, string? plainPassword = null, bool? isAdmin = false)
         {
             using var databaseManager = new DatabaseManager();
@@ -148,6 +156,7 @@ namespace Internet_Kafe_Proje.Database
                 new("@id", id),
             };
 
+            // Şifre güncellenecekse hashlenir ve sorguya eklenir
             if (!string.IsNullOrEmpty(plainPassword))
             {
                 string hashedPassword = PasswordHelper.HashPassword(plainPassword);
@@ -158,11 +167,12 @@ namespace Internet_Kafe_Proje.Database
             databaseManager.ExecuteNonQuery(sql, [.. parameters]);
         }
 
+        // Kullanıcıya ürün siparişi verir, bakiyesini kontrol eder ve günceller
         internal static void OrderItem(Kullanici user, int itemId)
         {
             using var databaseManager = new DatabaseManager();
 
-            // Eşyanın fiyatını al
+            // Ürünün fiyatını al
             string getItemSql = "SELECT price FROM items WHERE id = @itemId";
             var priceObj = databaseManager.GetSingle(getItemSql, new MySqlParameter("@itemId", itemId));
             if (priceObj == null)
@@ -171,7 +181,7 @@ namespace Internet_Kafe_Proje.Database
             }
             decimal price = Convert.ToDecimal(priceObj);
 
-            // Kullanıcının güncel parasını al
+            // Kullanıcının güncel bakiyesini al
             string getBalanceSql = "SELECT balance FROM users WHERE id = @userId";
             var balanceObj = databaseManager.GetSingle(getBalanceSql, new MySqlParameter("@userId", user.Id));
             if (balanceObj == null)
@@ -180,18 +190,20 @@ namespace Internet_Kafe_Proje.Database
             }
             int userBalance = Convert.ToInt32(balanceObj);
 
-            // Eğer kullanıcının güncel parası eşyanın parasından az ise, hata ver
+            // Yetersiz bakiye kontrolü
             if (userBalance < price)
             {
                 throw new Exception("Yetersiz bakiye.");
             }
 
+            // Bakiyeden düş
             string updateBalanceSql = "UPDATE users SET balance = balance - @price WHERE id = @userId";
             databaseManager.ExecuteNonQuery(updateBalanceSql,
                 new MySqlParameter("@price", price),
                 new MySqlParameter("@userId", user.Id)
             );
 
+            // Siparişi kaydet
             string insertOrderSql = @"
                 INSERT INTO orders (user_id, item_id)
                 VALUES (@userId, @itemId);
@@ -205,6 +217,7 @@ namespace Internet_Kafe_Proje.Database
             user.Balance -= price;
         }
 
+        // Kullanıcının bakiyesini günceller
         internal static void UpdateBalance(Kullanici user)
         {
             using var databaseManager = new DatabaseManager();
@@ -223,16 +236,18 @@ namespace Internet_Kafe_Proje.Database
             databaseManager.ExecuteNonQuery(sql, parameters);
         }
 
+        // Kullanıcıya oturum süresi ekler, mevcut süresi bitmemişse üzerine ekler
         internal static void AddSessionTime(int userId, TimeSpan duration)
         {
             using var databaseManager = new DatabaseManager();
 
-            // First, get the current session_end_time from the DB
+            // Mevcut session_end_time değerini al
             string selectSql = "SELECT session_end_time FROM users WHERE id = @userId";
             var result = databaseManager.GetSingle(selectSql, new MySqlParameter("@userId", userId));
 
             DateTime currentEndTime;
 
+            // Eğer mevcut süre varsa ve bitmemişse, ona ekle; yoksa şimdiki zamandan başlat
             if (result != null && DateTime.TryParse(result.ToString(), out DateTime dbEndTime) && dbEndTime > DateTime.Now)
             {
                 currentEndTime = dbEndTime;
