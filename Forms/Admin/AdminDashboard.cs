@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms.Admin
+namespace Internet_Kafe_Proje.Forms.Admin
 {
     public partial class AdminDashboard : Form
     {

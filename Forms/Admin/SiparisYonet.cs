@@ -1,4 +1,4 @@
-﻿using Internet_Kafe_Proje.Utils;
+using Internet_Kafe_Proje.Utils;
 using Internet_Kafe_Proje.Database;
 
 namespace Internet_Kafe_Proje.Forms.Admin

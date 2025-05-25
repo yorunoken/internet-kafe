@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms
+namespace Internet_Kafe_Proje.Forms
 {
     partial class AnaGirisSecimForm
     {
@@ -24,9 +24,9 @@
             ButtonRegister = new Button();
             panelMain.SuspendLayout();
             SuspendLayout();
-            // 
+            //
             // panelMain
-            // 
+            //
             panelMain.Anchor = AnchorStyles.None;
             panelMain.BackColor = Color.White;
             panelMain.BorderStyle = BorderStyle.FixedSingle;
@@ -37,9 +37,9 @@
             panelMain.Name = "panelMain";
             panelMain.Size = new Size(400, 250);
             panelMain.TabIndex = 0;
-            // 
+            //
             // labelWelcome
-            // 
+            //
             labelWelcome.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             labelWelcome.ForeColor = Color.Teal;
             labelWelcome.Location = new Point(0, 20);
@@ -48,9 +48,9 @@
             labelWelcome.TabIndex = 0;
             labelWelcome.Text = "İnternet Kafeye Hoş Geldiniz!";
             labelWelcome.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+            //
             // ButtonLogin
-            // 
+            //
             ButtonLogin.BackColor = Color.Teal;
             ButtonLogin.Cursor = Cursors.Hand;
             ButtonLogin.FlatStyle = FlatStyle.Flat;
@@ -63,9 +63,9 @@
             ButtonLogin.Text = "Giriş Yap";
             ButtonLogin.UseVisualStyleBackColor = false;
             ButtonLogin.Click += ButtonLogin_Click;
-            // 
+            //
             // ButtonRegister
-            // 
+            //
             ButtonRegister.BackColor = Color.SeaGreen;
             ButtonRegister.Cursor = Cursors.Hand;
             ButtonRegister.FlatStyle = FlatStyle.Flat;
@@ -78,9 +78,9 @@
             ButtonRegister.Text = "Kayıt Ol";
             ButtonRegister.UseVisualStyleBackColor = false;
             ButtonRegister.Click += ButtonRegister_Click;
-            // 
+            //
             // AnaForm
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;

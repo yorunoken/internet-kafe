@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using Internet_Kafe_Proje.Utils;
 using Internet_Kafe_Proje.Session;
 
@@ -204,7 +204,7 @@ namespace Internet_Kafe_Proje.Database
 
             user.Balance -= price;
         }
-    
+
         internal static void UpdateBalance(Kullanici user)
         {
             using var databaseManager = new DatabaseManager();

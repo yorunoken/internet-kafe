@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms
+namespace Internet_Kafe_Proje.Forms
 {
     partial class KayitForm
     {
@@ -39,9 +39,9 @@
             panelRegister.SuspendLayout();
             SuspendLayout();
 
-            // 
+            //
             // panelRegister
-            // 
+            //
             panelRegister.Anchor = AnchorStyles.None;
             panelRegister.BackColor = Color.White;
             panelRegister.BorderStyle = BorderStyle.FixedSingle;
@@ -59,9 +59,9 @@
             panelRegister.Size = new Size(300, 380);
             panelRegister.TabIndex = 0;
 
-            // 
+            //
             // labelTitle
-            // 
+            //
             labelTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             labelTitle.ForeColor = Color.DarkSlateGray;
             labelTitle.Location = new Point(0, 15);
@@ -71,9 +71,9 @@
             labelTitle.Text = "Kayıt Ol";
             labelTitle.TextAlign = ContentAlignment.MiddleCenter;
 
-            // 
+            //
             // labelUsername
-            // 
+            //
             labelUsername.Font = new Font("Segoe UI", 10F);
             labelUsername.Location = new Point(20, 75);
             labelUsername.Name = "labelUsername";
@@ -81,18 +81,18 @@
             labelUsername.TabIndex = 1;
             labelUsername.Text = "Kullanıcı Adı";
 
-            // 
+            //
             // textBoxUsername
-            // 
+            //
             textBoxUsername.Font = new Font("Segoe UI", 10F);
             textBoxUsername.Location = new Point(20, 95);
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(260, 25);
             textBoxUsername.TabIndex = 1;
 
-            // 
+            //
             // labelPassword
-            // 
+            //
             labelPassword.Font = new Font("Segoe UI", 10F);
             labelPassword.Location = new Point(20, 135);
             labelPassword.Name = "labelPassword";
@@ -100,9 +100,9 @@
             labelPassword.TabIndex = 2;
             labelPassword.Text = "Şifre";
 
-            // 
+            //
             // textBoxPassword
-            // 
+            //
             textBoxPassword.Font = new Font("Segoe UI", 10F);
             textBoxPassword.Location = new Point(20, 155);
             textBoxPassword.Name = "textBoxPassword";
@@ -110,9 +110,9 @@
             textBoxPassword.TabIndex = 2;
             textBoxPassword.UseSystemPasswordChar = true;
 
-            // 
+            //
             // labelConfirmPassword
-            // 
+            //
             labelConfirmPassword.Font = new Font("Segoe UI", 10F);
             labelConfirmPassword.Location = new Point(20, 195);
             labelConfirmPassword.Name = "labelConfirmPassword";
@@ -120,9 +120,9 @@
             labelConfirmPassword.TabIndex = 3;
             labelConfirmPassword.Text = "Şifre (Tekrar)";
 
-            // 
+            //
             // textBoxConfirmPassword
-            // 
+            //
             textBoxConfirmPassword.Font = new Font("Segoe UI", 10F);
             textBoxConfirmPassword.Location = new Point(20, 215);
             textBoxConfirmPassword.Name = "textBoxConfirmPassword";
@@ -130,9 +130,9 @@
             textBoxConfirmPassword.TabIndex = 3;
             textBoxConfirmPassword.UseSystemPasswordChar = true;
 
-            // 
+            //
             // labelError
-            // 
+            //
             labelError.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             labelError.ForeColor = Color.Red;
             labelError.Location = new Point(20, 245);
@@ -142,9 +142,9 @@
             labelError.Text = "Hata mesajı buraya gelecek.";
             labelError.Visible = false;
 
-            // 
+            //
             // ButtonRegister
-            // 
+            //
             ButtonRegister.BackColor = Color.SeaGreen;
             ButtonRegister.FlatStyle = FlatStyle.Flat;
             ButtonRegister.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -157,9 +157,9 @@
             ButtonRegister.UseVisualStyleBackColor = false;
             ButtonRegister.Click += ButtonRegister_Click;
 
-            // 
+            //
             // KayitForm
-            // 
+            //
             AcceptButton = ButtonRegister;
             AutoScaleDimensions = new SizeF(7F, 15F);
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

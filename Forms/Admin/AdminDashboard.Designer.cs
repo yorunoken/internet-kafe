@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms.Admin
+namespace Internet_Kafe_Proje.Forms.Admin
 {
     partial class AdminDashboard
     {
@@ -30,9 +30,9 @@
             buttonBack = new Button();
             panelDashboard.SuspendLayout();
             SuspendLayout();
-            // 
+            //
             // panelDashboard
-            // 
+            //
             panelDashboard.BackColor = Color.FromArgb(245, 245, 245);
             panelDashboard.Controls.Add(labelTitle);
             panelDashboard.Controls.Add(buttonUsers);
@@ -45,9 +45,9 @@
             panelDashboard.Name = "panelDashboard";
             panelDashboard.Size = new Size(788, 375);
             panelDashboard.TabIndex = 0;
-            // 
+            //
             // labelTitle
-            // 
+            //
             labelTitle.Font = new Font("Segoe UI", 22F, FontStyle.Bold);
             labelTitle.ForeColor = Color.FromArgb(30, 30, 30);
             labelTitle.Location = new Point(0, 22);
@@ -56,9 +56,9 @@
             labelTitle.TabIndex = 0;
             labelTitle.Text = "Yönetici Paneli";
             labelTitle.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+            //
             // buttonUsers
-            // 
+            //
             buttonUsers.BackColor = Color.FromArgb(55, 90, 120);
             buttonUsers.Cursor = Cursors.Hand;
             buttonUsers.FlatAppearance.BorderSize = 0;
@@ -73,9 +73,9 @@
             buttonUsers.Text = "Kullanıcıları Yönet";
             buttonUsers.UseVisualStyleBackColor = false;
             buttonUsers.Click += GoToUsers;
-            // 
+            //
             // buttonItems
-            // 
+            //
             buttonItems.BackColor = Color.FromArgb(55, 90, 120);
             buttonItems.Cursor = Cursors.Hand;
             buttonItems.FlatAppearance.BorderSize = 0;
@@ -90,9 +90,9 @@
             buttonItems.Text = "Ürünleri Yönet";
             buttonItems.UseVisualStyleBackColor = false;
             buttonItems.Click += GoToItems;
-            // 
+            //
             // buttonOrders
-            // 
+            //
             buttonOrders.BackColor = Color.FromArgb(55, 90, 120);
             buttonOrders.Cursor = Cursors.Hand;
             buttonOrders.FlatAppearance.BorderSize = 0;
@@ -107,9 +107,9 @@
             buttonOrders.Text = "Siparişleri Yönet";
             buttonOrders.UseVisualStyleBackColor = false;
             buttonOrders.Click += GoToOrders;
-            // 
+            //
             // buttonBack
-            // 
+            //
             buttonBack.BackColor = Color.IndianRed;
             buttonBack.Cursor = Cursors.Hand;
             buttonBack.FlatAppearance.BorderSize = 0;
@@ -124,9 +124,9 @@
             buttonBack.Text = "Çıkış Yap";
             buttonBack.UseVisualStyleBackColor = false;
             buttonBack.Click += GoBack;
-            // 
+            //
             // AdminDashboard
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;

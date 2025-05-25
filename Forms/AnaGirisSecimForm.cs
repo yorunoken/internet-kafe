@@ -1,4 +1,4 @@
-﻿using Internet_Kafe_Proje.Session;
+using Internet_Kafe_Proje.Session;
 
 namespace Internet_Kafe_Proje.Forms
 {

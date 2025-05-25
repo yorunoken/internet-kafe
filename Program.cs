@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using dotenv.net;
 using Internet_Kafe_Proje.Forms;
 

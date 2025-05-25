@@ -1,4 +1,4 @@
-﻿using Internet_Kafe_Proje.Session;
+using Internet_Kafe_Proje.Session;
 using Internet_Kafe_Proje.Database;
 using Internet_Kafe_Proje.Forms.Admin;
 
@@ -64,12 +64,12 @@ namespace Internet_Kafe_Proje.Forms
                 return;
             }
         }
-    
+
         private void ShowError(string message)
         {
             labelError.Text = message;
             labelError.Visible = true;
             return;
-        } 
+        }
     }
 }

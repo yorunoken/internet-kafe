@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms
+namespace Internet_Kafe_Proje.Forms
 {
     partial class GirisForm
     {
@@ -36,9 +36,9 @@
             checkBoxAdmin = new CheckBox();
             panelLogin.SuspendLayout();
             SuspendLayout();
-            // 
+            //
             // panelLogin
-            // 
+            //
             panelLogin.Anchor = AnchorStyles.None;
             panelLogin.BackColor = Color.White;
             panelLogin.BorderStyle = BorderStyle.FixedSingle;
@@ -54,9 +54,9 @@
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(300, 320);
             panelLogin.TabIndex = 0;
-            // 
+            //
             // labelTitle
-            // 
+            //
             labelTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             labelTitle.ForeColor = Color.DarkSlateGray;
             labelTitle.Location = new Point(0, 15);
@@ -65,44 +65,44 @@
             labelTitle.TabIndex = 0;
             labelTitle.Text = "Hoş Geldiniz";
             labelTitle.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+            //
             // labelUsername
-            // 
+            //
             labelUsername.Font = new Font("Segoe UI", 10F);
             labelUsername.Location = new Point(20, 65);
             labelUsername.Name = "labelUsername";
             labelUsername.Size = new Size(260, 20);
             labelUsername.TabIndex = 1;
             labelUsername.Text = "Kullancı Adı";
-            // 
+            //
             // textBoxUsername
-            // 
+            //
             textBoxUsername.Font = new Font("Segoe UI", 10F);
             textBoxUsername.Location = new Point(20, 85);
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(260, 25);
             textBoxUsername.TabIndex = 1;
-            // 
+            //
             // labelPassword
-            // 
+            //
             labelPassword.Font = new Font("Segoe UI", 10F);
             labelPassword.Location = new Point(20, 120);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(260, 20);
             labelPassword.TabIndex = 2;
             labelPassword.Text = "Şifre";
-            // 
+            //
             // textBoxPassword
-            // 
+            //
             textBoxPassword.Font = new Font("Segoe UI", 10F);
             textBoxPassword.Location = new Point(20, 140);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(260, 25);
             textBoxPassword.TabIndex = 2;
             textBoxPassword.UseSystemPasswordChar = true;
-            // 
+            //
             // labelError
-            // 
+            //
             labelError.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             labelError.ForeColor = Color.Red;
             labelError.Location = new Point(20, 240);
@@ -111,9 +111,9 @@
             labelError.TabIndex = 6;
             labelError.Text = "Hata mesajı buraya gelecek.";
             labelError.Visible = false;
-            // 
+            //
             // ButtonLogin
-            // 
+            //
             ButtonLogin.BackColor = Color.Teal;
             ButtonLogin.FlatStyle = FlatStyle.Flat;
             ButtonLogin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -125,9 +125,9 @@
             ButtonLogin.Text = "Giriş Yap";
             ButtonLogin.UseVisualStyleBackColor = false;
             ButtonLogin.Click += ButtonLogin_Click;
-            // 
+            //
             // checkBoxAdmin
-            // 
+            //
             checkBoxAdmin.Font = new Font("Segoe UI", 9F);
             checkBoxAdmin.Location = new Point(20, 170);
             checkBoxAdmin.Name = "checkBoxAdmin";
@@ -135,9 +135,9 @@
             checkBoxAdmin.TabIndex = 4;
             checkBoxAdmin.Text = "Yönetici olarak giriş yap";
             checkBoxAdmin.UseVisualStyleBackColor = true;
-            // 
+            //
             // GirisForm
-            // 
+            //
             AcceptButton = ButtonLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;

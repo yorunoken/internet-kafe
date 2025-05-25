@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms.Admin
+namespace Internet_Kafe_Proje.Forms.Admin
 {
     partial class SiparisYonet
     {
@@ -47,9 +47,9 @@
             buttonBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).BeginInit();
             SuspendLayout();
-            // 
+            //
             // dataGridViewOrders
-            // 
+            //
             dataGridViewOrders.Location = new Point(35, 35);
             dataGridViewOrders.Margin = new Padding(4, 3, 4, 3);
             dataGridViewOrders.Name = "dataGridViewOrders";
@@ -58,53 +58,53 @@
             dataGridViewOrders.Size = new Size(537, 395);
             dataGridViewOrders.TabIndex = 0;
             dataGridViewOrders.SelectionChanged += SelectedDataGrid;
-            // 
+            //
             // textBoxUserId
-            // 
+            //
             textBoxUserId.Font = new Font("Segoe UI", 10F);
             textBoxUserId.Location = new Point(607, 58);
             textBoxUserId.Margin = new Padding(4, 3, 4, 3);
             textBoxUserId.Name = "textBoxUserId";
             textBoxUserId.Size = new Size(279, 25);
             textBoxUserId.TabIndex = 1;
-            // 
+            //
             // textBoxItemId
-            // 
+            //
             textBoxItemId.Font = new Font("Segoe UI", 10F);
             textBoxItemId.Location = new Point(607, 127);
             textBoxItemId.Margin = new Padding(4, 3, 4, 3);
             textBoxItemId.Name = "textBoxItemId";
             textBoxItemId.Size = new Size(279, 25);
             textBoxItemId.TabIndex = 2;
-            // 
+            //
             // textBoxQuantity
-            // 
+            //
             textBoxQuantity.Font = new Font("Segoe UI", 10F);
             textBoxQuantity.Location = new Point(607, 196);
             textBoxQuantity.Margin = new Padding(4, 3, 4, 3);
             textBoxQuantity.Name = "textBoxQuantity";
             textBoxQuantity.Size = new Size(279, 25);
             textBoxQuantity.TabIndex = 3;
-            // 
+            //
             // textBoxTotalPrice
-            // 
+            //
             textBoxTotalPrice.Font = new Font("Segoe UI", 10F);
             textBoxTotalPrice.Location = new Point(607, 265);
             textBoxTotalPrice.Margin = new Padding(4, 3, 4, 3);
             textBoxTotalPrice.Name = "textBoxTotalPrice";
             textBoxTotalPrice.Size = new Size(279, 25);
             textBoxTotalPrice.TabIndex = 4;
-            // 
+            //
             // checkBoxDelivered
-            // 
+            //
             checkBoxDelivered.Location = new Point(700, 312);
             checkBoxDelivered.Margin = new Padding(4, 3, 4, 3);
             checkBoxDelivered.Name = "checkBoxDelivered";
             checkBoxDelivered.Size = new Size(23, 23);
             checkBoxDelivered.TabIndex = 10;
-            // 
+            //
             // labelUserId
-            // 
+            //
             labelUserId.AutoSize = true;
             labelUserId.Font = new Font("Segoe UI", 10F);
             labelUserId.Location = new Point(607, 35);
@@ -113,9 +113,9 @@
             labelUserId.Size = new Size(77, 19);
             labelUserId.TabIndex = 5;
             labelUserId.Text = "Kullanıcı Id:";
-            // 
+            //
             // labelItemId
-            // 
+            //
             labelItemId.AutoSize = true;
             labelItemId.Font = new Font("Segoe UI", 10F);
             labelItemId.Location = new Point(607, 104);
@@ -124,9 +124,9 @@
             labelItemId.Size = new Size(59, 19);
             labelItemId.TabIndex = 6;
             labelItemId.Text = "Ürün Id:";
-            // 
+            //
             // labelQuantity
-            // 
+            //
             labelQuantity.AutoSize = true;
             labelQuantity.Font = new Font("Segoe UI", 10F);
             labelQuantity.Location = new Point(607, 173);
@@ -135,9 +135,9 @@
             labelQuantity.Size = new Size(41, 19);
             labelQuantity.TabIndex = 7;
             labelQuantity.Text = "Adet:";
-            // 
+            //
             // labelTotalPrice
-            // 
+            //
             labelTotalPrice.AutoSize = true;
             labelTotalPrice.Font = new Font("Segoe UI", 10F);
             labelTotalPrice.Location = new Point(607, 242);
@@ -146,9 +146,9 @@
             labelTotalPrice.Size = new Size(89, 19);
             labelTotalPrice.TabIndex = 8;
             labelTotalPrice.Text = "Toplam Fiyat:";
-            // 
+            //
             // labelDelivered
-            // 
+            //
             labelDelivered.AutoSize = true;
             labelDelivered.Font = new Font("Segoe UI", 10F);
             labelDelivered.Location = new Point(607, 312);
@@ -157,9 +157,9 @@
             labelDelivered.Size = new Size(85, 19);
             labelDelivered.TabIndex = 9;
             labelDelivered.Text = "Teslim Edildi:";
-            // 
+            //
             // buttonDelete
-            // 
+            //
             buttonDelete.BackColor = Color.IndianRed;
             buttonDelete.FlatStyle = FlatStyle.Flat;
             buttonDelete.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -172,9 +172,9 @@
             buttonDelete.Text = "Sil";
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += DeleteOrder;
-            // 
+            //
             // buttonUpdate
-            // 
+            //
             buttonUpdate.BackColor = Color.SteelBlue;
             buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -187,9 +187,9 @@
             buttonUpdate.Text = "Güncelle";
             buttonUpdate.UseVisualStyleBackColor = false;
             buttonUpdate.Click += UpdateOrder;
-            // 
+            //
             // buttonClear
-            // 
+            //
             buttonClear.BackColor = Color.Gray;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -202,9 +202,9 @@
             buttonClear.Text = "Temizle";
             buttonClear.UseVisualStyleBackColor = false;
             buttonClear.Click += ClearFields;
-            // 
+            //
             // buttonRefresh
-            // 
+            //
             buttonRefresh.BackColor = Color.DarkOliveGreen;
             buttonRefresh.FlatStyle = FlatStyle.Flat;
             buttonRefresh.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -217,9 +217,9 @@
             buttonRefresh.Text = "Yenile";
             buttonRefresh.UseVisualStyleBackColor = false;
             buttonRefresh.Click += Refresh_Click;
-            // 
+            //
             // buttonBack
-            // 
+            //
             buttonBack.BackColor = Color.Teal;
             buttonBack.FlatStyle = FlatStyle.Flat;
             buttonBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -230,9 +230,9 @@
             buttonBack.TabIndex = 15;
             buttonBack.Text = "Geri Dön";
             buttonBack.UseVisualStyleBackColor = false;
-            // 
+            //
             // SiparisYonet
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;

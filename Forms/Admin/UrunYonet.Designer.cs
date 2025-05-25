@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms.Admin
+namespace Internet_Kafe_Proje.Forms.Admin
 {
     partial class UrunYonet
     {
@@ -37,9 +37,9 @@
             buttonBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewItems).BeginInit();
             SuspendLayout();
-            // 
+            //
             // dataGridViewItems
-            // 
+            //
             dataGridViewItems.Location = new Point(30, 30);
             dataGridViewItems.Name = "dataGridViewItems";
             dataGridViewItems.ReadOnly = true;
@@ -47,25 +47,25 @@
             dataGridViewItems.Size = new Size(460, 370);
             dataGridViewItems.TabIndex = 0;
             dataGridViewItems.SelectionChanged += SelectedDataGrid;
-            // 
+            //
             // textBoxItemName
-            // 
+            //
             textBoxItemName.Font = new Font("Segoe UI", 10F);
             textBoxItemName.Location = new Point(520, 75);
             textBoxItemName.Name = "textBoxItemName";
             textBoxItemName.Size = new Size(240, 25);
             textBoxItemName.TabIndex = 2;
-            // 
+            //
             // textBoxPrice
-            // 
+            //
             textBoxPrice.Font = new Font("Segoe UI", 10F);
             textBoxPrice.Location = new Point(520, 140);
             textBoxPrice.Name = "textBoxPrice";
             textBoxPrice.Size = new Size(240, 25);
             textBoxPrice.TabIndex = 3;
-            // 
+            //
             // labelProductName
-            // 
+            //
             labelProductName.AutoSize = true;
             labelProductName.Font = new Font("Segoe UI", 10F);
             labelProductName.Location = new Point(520, 50);
@@ -73,9 +73,9 @@
             labelProductName.Size = new Size(67, 19);
             labelProductName.TabIndex = 1;
             labelProductName.Text = "Ürün Adı:";
-            // 
+            //
             // labelPrice
-            // 
+            //
             labelPrice.AutoSize = true;
             labelPrice.Font = new Font("Segoe UI", 10F);
             labelPrice.Location = new Point(520, 115);
@@ -83,9 +83,9 @@
             labelPrice.Size = new Size(41, 19);
             labelPrice.TabIndex = 4;
             labelPrice.Text = "Fiyat:";
-            // 
+            //
             // buttonAdd
-            // 
+            //
             buttonAdd.BackColor = Color.Teal;
             buttonAdd.FlatStyle = FlatStyle.Flat;
             buttonAdd.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -97,9 +97,9 @@
             buttonAdd.Text = "Ekle";
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += CreateItem;
-            // 
+            //
             // buttonDelete
-            // 
+            //
             buttonDelete.BackColor = Color.IndianRed;
             buttonDelete.FlatStyle = FlatStyle.Flat;
             buttonDelete.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -111,9 +111,9 @@
             buttonDelete.Text = "Sil";
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += DeleteItem;
-            // 
+            //
             // buttonUpdate
-            // 
+            //
             buttonUpdate.BackColor = Color.SteelBlue;
             buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -125,9 +125,9 @@
             buttonUpdate.Text = "Güncelle";
             buttonUpdate.UseVisualStyleBackColor = false;
             buttonUpdate.Click += UpdateItem;
-            // 
+            //
             // buttonClear
-            // 
+            //
             buttonClear.BackColor = Color.Gray;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -139,9 +139,9 @@
             buttonClear.Text = "Temizle";
             buttonClear.UseVisualStyleBackColor = false;
             buttonClear.Click += ClearFields;
-            // 
+            //
             // buttonRefresh
-            // 
+            //
             buttonRefresh.BackColor = Color.DarkOliveGreen;
             buttonRefresh.FlatStyle = FlatStyle.Flat;
             buttonRefresh.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -153,9 +153,9 @@
             buttonRefresh.Text = "Yenile";
             buttonRefresh.UseVisualStyleBackColor = false;
             buttonRefresh.Click += Refresh_Click;
-            // 
+            //
             // buttonBack
-            // 
+            //
             buttonBack.BackColor = Color.DimGray;
             buttonBack.FlatStyle = FlatStyle.Flat;
             buttonBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -167,9 +167,9 @@
             buttonBack.Text = "Geri";
             buttonBack.UseVisualStyleBackColor = false;
             buttonBack.Click += buttonBack_Click;
-            // 
+            //
             // UrunYonet
-            // 
+            //
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(800, 450);
             Controls.Add(dataGridViewItems);

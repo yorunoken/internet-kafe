@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Internet_Kafe_Proje.Forms
@@ -30,27 +30,27 @@ namespace Internet_Kafe_Proje.Forms
             MoneyBuyButton = new Button();
             ButtonBack = new Button();
             SuspendLayout();
-            // 
+            //
             // labelWelcome
-            // 
+            //
             labelWelcome.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             labelWelcome.Location = new Point(110, 20);
             labelWelcome.Name = "labelWelcome";
             labelWelcome.Size = new Size(400, 35);
             labelWelcome.TabIndex = 0;
             labelWelcome.Text = "Hoşgeldin, kullanıcı";
-            // 
+            //
             // labelBalance
-            // 
+            //
             labelBalance.Font = new Font("Segoe UI", 13F);
             labelBalance.Location = new Point(110, 60);
             labelBalance.Name = "labelBalance";
             labelBalance.Size = new Size(300, 30);
             labelBalance.TabIndex = 1;
             labelBalance.Text = "Bakiyen: 0₺";
-            // 
+            //
             // panelItems
-            // 
+            //
             panelItems.AutoScroll = true;
             panelItems.BackColor = Color.WhiteSmoke;
             panelItems.Location = new Point(30, 110);
@@ -58,9 +58,9 @@ namespace Internet_Kafe_Proje.Forms
             panelItems.Padding = new Padding(10);
             panelItems.Size = new Size(740, 300);
             panelItems.TabIndex = 2;
-            // 
+            //
             // MoneyBuyButton
-            // 
+            //
             MoneyBuyButton.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             MoneyBuyButton.Location = new Point(650, 20);
             MoneyBuyButton.Name = "MoneyBuyButton";
@@ -69,9 +69,9 @@ namespace Internet_Kafe_Proje.Forms
             MoneyBuyButton.Text = "Para Satın Al";
             MoneyBuyButton.UseVisualStyleBackColor = true;
             MoneyBuyButton.Click += MoneyBuyButton_Click;
-            // 
+            //
             // ButtonBack
-            // 
+            //
             ButtonBack.BackColor = Color.IndianRed;
             ButtonBack.FlatStyle = FlatStyle.Flat;
             ButtonBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -83,9 +83,9 @@ namespace Internet_Kafe_Proje.Forms
             ButtonBack.Text = "Geri Çık";
             ButtonBack.UseVisualStyleBackColor = false;
             ButtonBack.Click += ButtonBack_Click;
-            // 
+            //
             // MarketForm
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;

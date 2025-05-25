@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Session
+namespace Internet_Kafe_Proje.Session
 {
     internal class Kullanici
     {

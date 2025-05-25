@@ -1,4 +1,4 @@
-﻿namespace Internet_Kafe_Proje.Forms.Admin
+namespace Internet_Kafe_Proje.Forms.Admin
 {
     partial class KullaniciYonet
     {
@@ -52,9 +52,9 @@
             buttonBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
             SuspendLayout();
-            // 
+            //
             // dataGridViewUsers
-            // 
+            //
             dataGridViewUsers.Location = new Point(20, 20);
             dataGridViewUsers.Name = "dataGridViewUsers";
             dataGridViewUsers.ReadOnly = true;
@@ -62,9 +62,9 @@
             dataGridViewUsers.Size = new Size(460, 390);
             dataGridViewUsers.TabIndex = 0;
             dataGridViewUsers.SelectionChanged += SelectedDataGrid;
-            // 
+            //
             // labelUsername
-            // 
+            //
             labelUsername.AutoSize = true;
             labelUsername.Font = new Font("Segoe UI", 10F);
             labelUsername.Location = new Point(510, 20);
@@ -72,17 +72,17 @@
             labelUsername.Size = new Size(85, 19);
             labelUsername.TabIndex = 1;
             labelUsername.Text = "Kullanıcı Adı:";
-            // 
+            //
             // textBoxUsername
-            // 
+            //
             textBoxUsername.Font = new Font("Segoe UI", 10F);
             textBoxUsername.Location = new Point(510, 45);
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(250, 25);
             textBoxUsername.TabIndex = 2;
-            // 
+            //
             // labelPassword
-            // 
+            //
             labelPassword.AutoSize = true;
             labelPassword.Font = new Font("Segoe UI", 10F);
             labelPassword.Location = new Point(510, 85);
@@ -90,18 +90,18 @@
             labelPassword.Size = new Size(38, 19);
             labelPassword.TabIndex = 3;
             labelPassword.Text = "Şifre:";
-            // 
+            //
             // textBoxPassword
-            // 
+            //
             textBoxPassword.Font = new Font("Segoe UI", 10F);
             textBoxPassword.Location = new Point(510, 110);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(250, 25);
             textBoxPassword.TabIndex = 4;
             textBoxPassword.UseSystemPasswordChar = true;
-            // 
+            //
             // checkBoxIsAdmin
-            // 
+            //
             checkBoxIsAdmin.AutoSize = true;
             checkBoxIsAdmin.Font = new Font("Segoe UI", 10F);
             checkBoxIsAdmin.Location = new Point(510, 150);
@@ -109,9 +109,9 @@
             checkBoxIsAdmin.Size = new Size(100, 23);
             checkBoxIsAdmin.TabIndex = 5;
             checkBoxIsAdmin.Text = "Yönetici mi?";
-            // 
+            //
             // labelBalance
-            // 
+            //
             labelBalance.AutoSize = true;
             labelBalance.Font = new Font("Segoe UI", 10F);
             labelBalance.Location = new Point(510, 190);
@@ -119,17 +119,17 @@
             labelBalance.Size = new Size(51, 19);
             labelBalance.TabIndex = 6;
             labelBalance.Text = "Bakiye:";
-            // 
+            //
             // textBoxBalance
-            // 
+            //
             textBoxBalance.Font = new Font("Segoe UI", 10F);
             textBoxBalance.Location = new Point(510, 215);
             textBoxBalance.Name = "textBoxBalance";
             textBoxBalance.Size = new Size(250, 25);
             textBoxBalance.TabIndex = 7;
-            // 
+            //
             // buttonAdd
-            // 
+            //
             buttonAdd.BackColor = Color.Teal;
             buttonAdd.FlatStyle = FlatStyle.Flat;
             buttonAdd.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -141,9 +141,9 @@
             buttonAdd.Text = "Ekle";
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += CreateUser;
-            // 
+            //
             // buttonDelete
-            // 
+            //
             buttonDelete.BackColor = Color.IndianRed;
             buttonDelete.FlatStyle = FlatStyle.Flat;
             buttonDelete.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -155,9 +155,9 @@
             buttonDelete.Text = "Sil";
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += DeleteUser;
-            // 
+            //
             // buttonUpdate
-            // 
+            //
             buttonUpdate.BackColor = Color.SteelBlue;
             buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -169,9 +169,9 @@
             buttonUpdate.Text = "Güncelle";
             buttonUpdate.UseVisualStyleBackColor = false;
             buttonUpdate.Click += UpdateUser;
-            // 
+            //
             // buttonClear
-            // 
+            //
             buttonClear.BackColor = Color.Gray;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -183,9 +183,9 @@
             buttonClear.Text = "Temizle";
             buttonClear.UseVisualStyleBackColor = false;
             buttonClear.Click += ClearSelection;
-            // 
+            //
             // buttonRefresh
-            // 
+            //
             buttonRefresh.BackColor = Color.DarkOliveGreen;
             buttonRefresh.FlatStyle = FlatStyle.Flat;
             buttonRefresh.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -197,9 +197,9 @@
             buttonRefresh.Text = "Yenile";
             buttonRefresh.UseVisualStyleBackColor = false;
             buttonRefresh.Click += Refresh_Click;
-            // 
+            //
             // labelExtraTime
-            // 
+            //
             labelExtraTime.AutoSize = true;
             labelExtraTime.Font = new Font("Segoe UI", 10F);
             labelExtraTime.Location = new Point(510, 405);
@@ -207,17 +207,17 @@
             labelExtraTime.Size = new Size(107, 19);
             labelExtraTime.TabIndex = 13;
             labelExtraTime.Text = "Ekstra Süre (dk):";
-            // 
+            //
             // textBoxExtraTime
-            // 
+            //
             textBoxExtraTime.Font = new Font("Segoe UI", 10F);
             textBoxExtraTime.Location = new Point(510, 430);
             textBoxExtraTime.Name = "textBoxExtraTime";
             textBoxExtraTime.Size = new Size(120, 25);
             textBoxExtraTime.TabIndex = 14;
-            // 
+            //
             // buttonAddTime
-            // 
+            //
             buttonAddTime.BackColor = Color.MediumPurple;
             buttonAddTime.FlatStyle = FlatStyle.Flat;
             buttonAddTime.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -229,9 +229,9 @@
             buttonAddTime.Text = "Süre Ekle";
             buttonAddTime.UseVisualStyleBackColor = false;
             buttonAddTime.Click += ButtonAddTime_Click;
-            // 
+            //
             // buttonBack
-            // 
+            //
             buttonBack.BackColor = Color.LightSlateGray;
             buttonBack.FlatStyle = FlatStyle.Flat;
             buttonBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
@@ -243,9 +243,9 @@
             buttonBack.Text = "Geri";
             buttonBack.UseVisualStyleBackColor = false;
             buttonBack.Click += buttonBack_Click;
-            // 
+            //
             // KullaniciYonet
-            // 
+            //
             ClientSize = new Size(800, 468);
             Controls.Add(dataGridViewUsers);
             Controls.Add(labelUsername);
