@@ -1,5 +1,5 @@
 ﻿using Internet_Kafe_Proje.Session;
-using Internet_Kafe_Proje.VeriTabani;
+using Internet_Kafe_Proje.Database;
 
 namespace Internet_Kafe_Proje.Forms
 {
@@ -33,7 +33,7 @@ namespace Internet_Kafe_Proje.Forms
 
             try
             {
-                var kullanici = Kullanicilar.UserSignup(username, password);
+                var kullanici = Users.UserSignup(username, password);
 
                 Oturum.AktifKullanici = kullanici;
                 Console.WriteLine($"Logging in as: {kullanici.Username}");

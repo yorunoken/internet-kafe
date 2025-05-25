@@ -2,7 +2,7 @@
 using MySql.Data.MySqlClient;
 using dotenv.net;
 
-namespace Internet_Kafe_Proje.VeriTabani
+namespace Internet_Kafe_Proje.Database
 {
     public class DatabaseManager : IDisposable
     {

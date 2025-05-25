@@ -36,7 +36,6 @@
             checkBoxAdmin = new CheckBox();
             panelLogin.SuspendLayout();
             SuspendLayout();
-
             // 
             // panelLogin
             // 
@@ -53,7 +52,7 @@
             panelLogin.Controls.Add(checkBoxAdmin);
             panelLogin.Location = new Point(250, 100);
             panelLogin.Name = "panelLogin";
-            panelLogin.Size = new Size(300, 280);
+            panelLogin.Size = new Size(300, 320);
             panelLogin.TabIndex = 0;
             // 
             // labelTitle
@@ -106,9 +105,9 @@
             // 
             labelError.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             labelError.ForeColor = Color.Red;
-            labelError.Location = new Point(20, 280);
+            labelError.Location = new Point(20, 240);
             labelError.Name = "labelError";
-            labelError.Size = new Size(260, 20);
+            labelError.Size = new Size(260, 48);
             labelError.TabIndex = 6;
             labelError.Text = "Hata mesajı buraya gelecek.";
             labelError.Visible = false;
@@ -126,9 +125,9 @@
             ButtonLogin.Text = "Giriş Yap";
             ButtonLogin.UseVisualStyleBackColor = false;
             ButtonLogin.Click += ButtonLogin_Click;
-            //
+            // 
             // checkBoxAdmin
-            //
+            // 
             checkBoxAdmin.Font = new Font("Segoe UI", 9F);
             checkBoxAdmin.Location = new Point(20, 170);
             checkBoxAdmin.Name = "checkBoxAdmin";
@@ -140,15 +139,15 @@
             // GirisForm
             // 
             AcceptButton = ButtonLogin;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(800, 450);
             Controls.Add(panelLogin);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "GirisForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Giriş";
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();

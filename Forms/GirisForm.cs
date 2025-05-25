@@ -1,5 +1,5 @@
 ﻿using Internet_Kafe_Proje.Session;
-using Internet_Kafe_Proje.VeriTabani;
+using Internet_Kafe_Proje.Database;
 using Internet_Kafe_Proje.Forms.Admin;
 
 namespace Internet_Kafe_Proje.Forms
@@ -23,6 +23,7 @@ namespace Internet_Kafe_Proje.Forms
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 ShowError("Lütfen bütün alanları doldurun.");
+                Console.WriteLine("hi");
                 return;
             }
 
@@ -30,7 +31,7 @@ namespace Internet_Kafe_Proje.Forms
             {
                 bool isAdminLogin = checkBoxAdmin.Checked;
 
-                var kullanici = Kullanicilar.UserLogin(username, password, isAdminLogin);
+                var kullanici = Users.UserLogin(username, password, isAdminLogin);
                 if (kullanici == null)
                 {
                     ShowError("Giriş yapılırken bir hata ile karşılaşıldı. Lütfen tekrar deneyiniz.");
@@ -45,13 +46,17 @@ namespace Internet_Kafe_Proje.Forms
                     var adminDashboardForm = new AdminDashboard();
                     adminDashboardForm.Show();
                 }
-                else
+                else if (isAdminLogin)
+                {
+                    ShowError("Admin olarak giriş yapamazsınız çünkü size Admin yetkisi verilmemiş.");
+                    return;
+                } else
                 {
                     var marketForm = new MarketForm();
                     marketForm.Show();
                 }
 
-                this.Hide();
+                    this.Hide();
             }
             catch
             {

@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace Internet_Kafe_Proje.VeriTabani
+namespace Internet_Kafe_Proje.Database
 {
-    public class ItemUpdateDo
+    public class ItemUpdateArgs
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -11,7 +11,7 @@ namespace Internet_Kafe_Proje.VeriTabani
     }
 
 
-    internal class Itemler
+    internal class Items
     {
         internal static DataTable GetAllItems()
         {
@@ -55,7 +55,7 @@ namespace Internet_Kafe_Proje.VeriTabani
             databaseManager.ExecuteNonQuery(sql, parameters);
         }
 
-        internal static void UpdateItem(ItemUpdateDo item)
+        internal static void UpdateItem(ItemUpdateArgs item)
         {
             using var databaseManager = new DatabaseManager();
 

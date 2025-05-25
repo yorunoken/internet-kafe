@@ -2,12 +2,12 @@
 {
     class MessageBoxes
     {
-        static internal void ErrorBox(string errorDesc)
+        static internal void Error(string errorDesc)
         {
             MessageBox.Show(errorDesc, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        static internal void SuccessBox(string successDesc)
+        static internal void Success(string successDesc)
         {
             MessageBox.Show(successDesc, "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

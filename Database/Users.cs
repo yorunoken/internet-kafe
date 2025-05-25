@@ -2,35 +2,79 @@
 using Internet_Kafe_Proje.Utils;
 using Internet_Kafe_Proje.Session;
 
-namespace Internet_Kafe_Proje.VeriTabani
+namespace Internet_Kafe_Proje.Database
 {
-    internal class Kullanicilar
+    internal class Users
     {
-        private const decimal DefaultBalance = 0.0M;
+        private const decimal DEFAULT_BALANCE = 0.0M;
 
-        internal static Kullanici UserSignup(string username, string plainPassword)
+        internal static List<Kullanici> GetAllUsers()
         {
             using var databaseManager = new DatabaseManager();
+
+            string sql = "SELECT id, username, balance, is_admin FROM users";
+            var resultTable = databaseManager.ExecuteQuery(sql);
+
+            var users = new List<Kullanici>();
+
+            foreach (System.Data.DataRow row in resultTable.Rows)
+            {
+                var user = new Kullanici
+                {
+                    Id = Convert.ToInt32(row["id"]),
+                    Username = Convert.ToString(row["username"]) ?? "",
+                    Balance = Convert.ToDecimal(row["balance"]),
+                    IsAdmin = Convert.ToBoolean(row["is_admin"])
+                };
+
+                users.Add(user);
+            }
+
+            return users;
+        }
+
+        internal static Kullanici UserSignup(string username, string plainPassword, decimal? startingBalance = null, bool? isAdmin = null)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                throw new ArgumentException("Boş olamaz: ", nameof(username));
+            }
+
+            if (string.IsNullOrEmpty(plainPassword))
+            {
+                throw new ArgumentException("Boş olamaz: ", nameof(plainPassword));
+            }
+
+            using var databaseManager = new DatabaseManager();
+
+            // Check if username exits
+            object usrnm = databaseManager.GetSingle("SELECT username FROM users WHERE username = @u", new MySqlParameter("@u", username));
+            if (usrnm != null)
+            {
+                throw new Exception($"Kullanıcı adı zaten kayıtlı: {username}");
+            }
 
             string hashedPassword = PasswordHelper.HashPassword(plainPassword);
 
             string sql = @"
-                INSERT INTO users (username, password)
-                VALUES (@username, @hashed_password);
+                INSERT INTO users (username, password, balance, is_admin)
+                VALUES (@username, @hashed_password, @startingBalance, @isAdmin);
                 SELECT LAST_INSERT_ID() AS id;
             ";
 
             var parameters = new MySqlParameter[]
             {
                 new("@username", username),
-                new("@hashed_password", hashedPassword)
+                new("@hashed_password", hashedPassword),
+                new("@startingBalance", startingBalance ?? DEFAULT_BALANCE),
+                new("@isAdmin", isAdmin ?? false),
             };
 
             var resultTable = databaseManager.ExecuteQuery(sql, parameters);
 
             int id = Convert.ToInt32(resultTable.Rows[0]["id"]);
 
-            return new Kullanici { Id = id, Username = username, Balance = DefaultBalance, IsAdmin = false };
+            return new Kullanici { Id = id, Username = username, Balance = startingBalance ?? DEFAULT_BALANCE, IsAdmin = false };
         }
 
         internal static Kullanici? UserLogin(string username, string plainPassword, bool isAdminLogin)
@@ -38,12 +82,9 @@ namespace Internet_Kafe_Proje.VeriTabani
             using var databaseManager = new DatabaseManager();
 
             string sql = "SELECT id, password, balance, is_admin FROM users WHERE username = @username";
-            var parameters = new MySqlParameter[]
-            {
-                new("@username", username)
-            };
+            var parameter = new MySqlParameter("@username", username);
 
-            var resultTable = databaseManager.ExecuteQuery(sql, parameters);
+            var resultTable = databaseManager.ExecuteQuery(sql, parameter);
             if (resultTable.Rows.Count == 0)
             {
                 return null;
@@ -63,6 +104,38 @@ namespace Internet_Kafe_Proje.VeriTabani
             bool passwordCorrect = PasswordHelper.VerifyPassword(hashedPassword, plainPassword);
 
             return passwordCorrect ? new Kullanici { Id = id, Username = username, Balance = balance, IsAdmin = isAdminFromDb && isAdminLogin } : null;
+        }
+
+        internal static void DeleteUserById(int id)
+        {
+            using var databaseManager = new DatabaseManager();
+
+            string sql = "DELETE FROM users WHERE id = @userId";
+            var parameter = new MySqlParameter("@userId", id);
+            databaseManager.ExecuteNonQuery(sql, parameter);
+        }
+
+        internal static void UpdateUser(int id, string username, decimal balance, string? plainPassword = null, bool? isAdmin = false)
+        {
+            using var databaseManager = new DatabaseManager();
+
+            string sql = @"UPDATE users SET username = @username, is_admin = @isAdmin, balance = @balance WHERE id = @id";
+            var parameters = new List<MySqlParameter>
+            {
+                new("@username", username),
+                new("@isAdmin", isAdmin),
+                new("@balance", balance),
+                new("@id", id),
+            };
+
+            if (!string.IsNullOrEmpty(plainPassword))
+            {
+                string hashedPassword = PasswordHelper.HashPassword(plainPassword);
+                sql = @"UPDATE users SET username = @username, password = @password, is_admin = @isAdmin WHERE id = @id";
+                parameters.Add(new MySqlParameter("@password", hashedPassword));
+            }
+
+            databaseManager.ExecuteNonQuery(sql, [.. parameters]);
         }
 
         internal static void OrderItem(Kullanici user, int itemId)

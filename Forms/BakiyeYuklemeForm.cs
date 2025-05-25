@@ -1,6 +1,6 @@
 ﻿using Internet_Kafe_Proje.Session;
 using Internet_Kafe_Proje.Utils;
-using Internet_Kafe_Proje.VeriTabani;
+using Internet_Kafe_Proje.Database;
 
 namespace Internet_Kafe_Proje.Forms
 {
@@ -15,7 +15,7 @@ namespace Internet_Kafe_Proje.Forms
             user = Oturum.AktifKullanici;
             if (user == null)
             {
-                MessageBoxes.ErrorBox("Kullanıcı giriş yapmamıştır.");
+                MessageBoxes.Error("Kullanıcı giriş yapmamıştır.");
                 return;
             }
 
@@ -31,28 +31,28 @@ namespace Internet_Kafe_Proje.Forms
         {
             user!.Balance += 50;
             UpdateMoneyLabel();
-            Kullanicilar.UpdateBalance(user);
+            Users.UpdateBalance(user);
         }
 
         private void ButtonBuy100_Click(object sender, EventArgs e)
         {
             user!.Balance += 100;
             UpdateMoneyLabel();
-            Kullanicilar.UpdateBalance(user);
+            Users.UpdateBalance(user);
         }
 
         private void ButtonBuy150_Click(object sender, EventArgs e)
         {
             user!.Balance += 150;
             UpdateMoneyLabel();
-            Kullanicilar.UpdateBalance(user);
+            Users.UpdateBalance(user);
         }
 
         private void ButtonBuy200_Click(object sender, EventArgs e)
         {
             user!.Balance += 200;
             UpdateMoneyLabel();
-            Kullanicilar.UpdateBalance(user);
+            Users.UpdateBalance(user);
         }
     }
 }

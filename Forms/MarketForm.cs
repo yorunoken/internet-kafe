@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using Internet_Kafe_Proje.Session;
 using Internet_Kafe_Proje.Utils;
-using Internet_Kafe_Proje.VeriTabani;
+using Internet_Kafe_Proje.Database;
 
 namespace Internet_Kafe_Proje.Forms
 {
@@ -16,7 +16,7 @@ namespace Internet_Kafe_Proje.Forms
             user = Oturum.AktifKullanici;
             if (user == null)
             {
-                MessageBoxes.ErrorBox("Aktif bir oturum bulunmamaktadır. Lütfen giriş yapın.");
+                MessageBoxes.Error("Aktif bir oturum bulunmamaktadır. Lütfen giriş yapın.");
                 return;
             }
 
@@ -35,7 +35,7 @@ namespace Internet_Kafe_Proje.Forms
         {
             var items = new List<(string name, decimal price, int id)>();
 
-            foreach (DataRow row in Itemler.GetAllItems().Rows)
+            foreach (DataRow row in Items.GetAllItems().Rows)
             {
                 string name = Convert.ToString(row["name"]) ?? "";
                 decimal price = Convert.ToDecimal(row["price"]);
@@ -81,13 +81,13 @@ namespace Internet_Kafe_Proje.Forms
                 {
                     try
                     {
-                        Kullanicilar.OrderItem(user!, id);
+                        Users.OrderItem(user!, id);
                         UpdateBalanceLabel();
-                        MessageBoxes.SuccessBox($"{name} satın alındı!");
+                        MessageBoxes.Success($"{name} satın alındı!");
                     }
                     catch (Exception ex)
                     {
-                        MessageBoxes.ErrorBox(ex.Message);
+                        MessageBoxes.Error(ex.Message);
                     }
                 };
 
