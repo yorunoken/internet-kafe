@@ -1,4 +1,6 @@
+using System.Data;
 using MySql.Data.MySqlClient;
+
 using Internet_Kafe_Proje.Utils;
 using Internet_Kafe_Proje.Session;
 
@@ -18,8 +20,7 @@ namespace Internet_Kafe_Proje.Database
 
             var users = new List<Kullanici>();
 
-            // Her satırı Kullanici nesnesine çevirip listeye ekler
-            foreach (System.Data.DataRow row in resultTable.Rows)
+            foreach (DataRow row in resultTable.Rows)
             {
                 var user = new Kullanici
                 {

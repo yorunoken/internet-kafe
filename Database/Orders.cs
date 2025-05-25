@@ -12,17 +12,40 @@ namespace Internet_Kafe_Proje.Database
         public bool? Delivered { get; set; }
     }
 
+    public class Order
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int ItemId { get; set; }
+        public int Quantity { get; set; }
+        public bool Delivered { get; set; }
+    }
+
     internal class Orders
     {
-        // Tüm siparişleri getirir (SELECT * FROM orders)
-        internal static DataTable GetAllOrders()
+        internal static List<Order> GetAllOrders()
         {
             using var databaseManager = new DatabaseManager();
 
-            string sql = "SELECT * FROM orders;";
-
+            string sql = "SELECT id, user_id, item_id, quantity, delivered FROM orders;";
             var resultTable = databaseManager.ExecuteQuery(sql);
-            return resultTable;
+
+            var orders = new List<Order>();
+
+            foreach (DataRow row in resultTable.Rows)
+            {
+                var order = new Order
+                {
+                    Id = Convert.ToInt32(row["id"]),
+                    UserId = Convert.ToInt32(row["user_id"]),
+                    ItemId = Convert.ToInt32(row["item_id"]),
+                    Quantity = Convert.ToInt32(row["quantity"]),
+                    Delivered = Convert.ToBoolean(row["delivered"]),
+                };
+                orders.Add(order);
+            }
+
+            return orders;
         }
 
         // Yeni sipariş ekler (INSERT INTO orders)

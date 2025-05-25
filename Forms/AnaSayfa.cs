@@ -22,12 +22,6 @@ namespace Internet_Kafe_Proje.Forms
 
             sessionEndTime = user.SessionEndTime;
 
-            if (sessionEndTime == null)
-            {
-                OnTimeUp();
-                return;
-            }
-
             countdownTimer = new System.Windows.Forms.Timer
             {
                 Interval = 1000
@@ -59,7 +53,6 @@ namespace Internet_Kafe_Proje.Forms
             {
                 LabelTimeLeft.Text = "Süre doldu!";
                 countdownTimer.Stop();
-                OnTimeUp();
             }
             else
             {
@@ -79,12 +72,14 @@ namespace Internet_Kafe_Proje.Forms
 
         private void ButtonMarket_Click(object sender, EventArgs e)
         {
-            new MarketForm().ShowDialog();
+            new MarketForm().Show();
+            this.Hide();
         }
 
         private void ButtonAddBalance_Click(object sender, EventArgs e)
         {
-            new BakiyeYuklemeForm().ShowDialog();
+            new BakiyeYuklemeForm().Show();
+            this.Hide();
         }
 
         private void ButtonSignOut_Click(object sender, EventArgs e)

@@ -155,8 +155,8 @@ namespace Internet_Kafe_Proje.Forms.Admin
             buttonRefresh.Click += Refresh_Click;
             //
             // buttonBack
-            //
-            buttonBack.BackColor = Color.DimGray;
+            // 
+            buttonBack.BackColor = Color.Teal;
             buttonBack.FlatStyle = FlatStyle.Flat;
             buttonBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             buttonBack.ForeColor = Color.White;
@@ -184,6 +184,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             Controls.Add(buttonRefresh);
             Controls.Add(buttonBack);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            StartPosition = FormStartPosition.CenterScreen;
             MaximizeBox = false;
             Name = "UrunYonet";
             Text = "Ürünleri Yönet";

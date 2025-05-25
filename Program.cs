@@ -14,7 +14,7 @@ namespace Internet_Kafe_Proje
         static void Main()
         {
             // Konsol ile aç
-            AllocConsole();
+            // AllocConsole();
 
             // .env dosyasını yükle
             DotEnv.Load();

@@ -33,17 +33,9 @@ namespace Internet_Kafe_Proje.Forms
 
         private void LoadItems()
         {
-            var items = new List<(string name, decimal price, int id)>();
+            var items = Items.GetAllItems();
 
-            foreach (DataRow row in Items.GetAllItems().Rows)
-            {
-                string name = Convert.ToString(row["name"]) ?? "";
-                decimal price = Convert.ToDecimal(row["price"]);
-                int id = Convert.ToInt32(row["id"]);
-                items.Add((name, price, id));
-            }
-
-            foreach (var (name, price, id) in items)
+            foreach (var item in items)
             {
                 var itemPanel = new Panel
                 {
@@ -55,7 +47,7 @@ namespace Internet_Kafe_Proje.Forms
 
                 var nameLabel = new Label
                 {
-                    Text = name,
+                    Text = item.Name,
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     Location = new Point(10, 10),
                     AutoSize = true
@@ -63,7 +55,7 @@ namespace Internet_Kafe_Proje.Forms
 
                 var priceLabel = new Label
                 {
-                    Text = $"Fiyat: {price}₺",
+                    Text = $"Fiyat: {item.Price}₺",
                     Location = new Point(10, 35),
                     AutoSize = true
                 };
@@ -81,9 +73,9 @@ namespace Internet_Kafe_Proje.Forms
                 {
                     try
                     {
-                        Users.OrderItem(user!, id);
+                        Users.OrderItem(user!, item.Id);
                         UpdateBalanceLabel();
-                        MessageBoxes.Success($"{name} satın alındı!");
+                        MessageBoxes.Success($"{item.Name} satın alındı!");
                     }
                     catch (Exception ex)
                     {

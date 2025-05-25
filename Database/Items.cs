@@ -10,17 +10,37 @@ namespace Internet_Kafe_Proje.Database
         public decimal? Price { get; set; }
     }
 
+    public class Item
+    {
+        public int Id { get; set; }
+        public required string Name { get; set; }
+        public decimal Price { get; set; }
+    }
+
     internal class Items
     {
         // Tüm ürünleri getirir (SELECT * FROM items)
-        internal static DataTable GetAllItems()
+        internal static List<Item> GetAllItems()
         {
             using var databaseManager = new DatabaseManager();
 
-            string sql = "SELECT * FROM items;";
-
+            string sql = "SELECT id, name, price FROM items;";
             var resultTable = databaseManager.ExecuteQuery(sql);
-            return resultTable;
+
+            var items = new List<Item>();
+
+            foreach (DataRow row in resultTable.Rows)
+            {
+                var item = new Item
+                {
+                    Id = Convert.ToInt32(row["id"]),
+                    Name = Convert.ToString(row["name"]) ?? "",
+                    Price = Convert.ToDecimal(row["price"])
+                };
+                items.Add(item);    
+            }
+
+            return items;
         }
 
         // Yeni ürün ekler (INSERT INTO items)

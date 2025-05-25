@@ -24,19 +24,22 @@ namespace Internet_Kafe_Proje.Forms.Admin
         // Kullanıcı yönetim ekranına geçiş
         private void GoToUsers(object sender, EventArgs e)
         {
-            new KullaniciYonet().ShowDialog();
+            new KullaniciYonet().Show();
+            this.Hide();
         }
 
         // Ürün yönetim ekranına geçiş
         private void GoToItems(object sender, EventArgs e)
         {
-            new UrunYonet().ShowDialog();
+            new UrunYonet().Show();
+            this.Hide();
         }
 
         // Sipariş yönetim ekranına geçiş
         private void GoToOrders(object sender, EventArgs e)
         {
-            new SiparisYonet().ShowDialog();
+            new SiparisYonet().Show();
+            this.Hide();
         }
 
         // Çıkış yapar

@@ -231,8 +231,8 @@ namespace Internet_Kafe_Proje.Forms.Admin
             buttonAddTime.Click += ButtonAddTime_Click;
             //
             // buttonBack
-            //
-            buttonBack.BackColor = Color.LightSlateGray;
+            // 
+            buttonBack.BackColor = Color.Teal;
             buttonBack.FlatStyle = FlatStyle.Flat;
             buttonBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             buttonBack.ForeColor = Color.White;

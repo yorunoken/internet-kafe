@@ -91,7 +91,8 @@ namespace Internet_Kafe_Proje.Forms.Admin
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            // Geri butonu için kod eklenebilir
+            this.Close();
+            new AdminDashboard().Show();
         }
     }
 }

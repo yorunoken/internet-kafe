@@ -228,9 +228,10 @@ namespace Internet_Kafe_Proje.Forms.Admin
             buttonBack.Name = "buttonBack";
             buttonBack.Size = new Size(137, 35);
             buttonBack.TabIndex = 15;
-            buttonBack.Text = "Geri Dön";
+            buttonBack.Text = "Geri";
             buttonBack.UseVisualStyleBackColor = false;
-            //
+            buttonBack.Click += buttonBack_Click;
+            // 
             // SiparisYonet
             //
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -257,6 +258,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "SiparisYonet";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Siparişleri Yönet";
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).EndInit();
             ResumeLayout(false);

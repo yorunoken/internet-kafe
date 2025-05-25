@@ -107,5 +107,11 @@ namespace Internet_Kafe_Proje.Forms.Admin
             checkBoxDelivered.Checked = false;
             dataGridViewOrders.ClearSelection();
         }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new AdminDashboard().Show();
+        }
     }
 }
