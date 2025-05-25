@@ -1,6 +1,6 @@
 ﻿namespace Internet_Kafe_Proje.Forms
 {
-    partial class AnaForm
+    partial class AnaGirisSecimForm
     {
         private System.ComponentModel.IContainer components = null;
 

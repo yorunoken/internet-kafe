@@ -26,7 +26,7 @@ namespace Internet_Kafe_Proje
 
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new AnaForm());
+            Application.Run(new AnaGirisSecimForm());
         }
     }
 }

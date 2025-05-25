@@ -100,10 +100,14 @@ namespace Internet_Kafe_Proje.Forms
 
         private void MoneyBuyButton_Click(object sender, EventArgs e)
         {
-            var bakiyeYuklemeForm = new BakiyeYuklemeForm();
             this.Hide();
+            new BakiyeYuklemeForm().Show();
+        }
 
-            bakiyeYuklemeForm.Show();
+        private void ButtonBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new AnaSayfa().Show();
         }
     }
 }

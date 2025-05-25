@@ -13,6 +13,7 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Button buttonBack;  // Added back button
 
         protected override void Dispose(bool disposing)
         {
@@ -33,6 +34,7 @@
             buttonUpdate = new Button();
             buttonClear = new Button();
             buttonRefresh = new Button();
+            buttonBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewItems).BeginInit();
             SuspendLayout();
             // 
@@ -152,6 +154,20 @@
             buttonRefresh.UseVisualStyleBackColor = false;
             buttonRefresh.Click += Refresh_Click;
             // 
+            // buttonBack
+            // 
+            buttonBack.BackColor = Color.DimGray;
+            buttonBack.FlatStyle = FlatStyle.Flat;
+            buttonBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            buttonBack.ForeColor = Color.White;
+            buttonBack.Location = new Point(160, 410);
+            buttonBack.Name = "buttonBack";
+            buttonBack.Size = new Size(120, 30);
+            buttonBack.TabIndex = 10;
+            buttonBack.Text = "Geri";
+            buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
+            // 
             // UrunYonet
             // 
             BackColor = Color.WhiteSmoke;
@@ -166,10 +182,10 @@
             Controls.Add(buttonUpdate);
             Controls.Add(buttonClear);
             Controls.Add(buttonRefresh);
+            Controls.Add(buttonBack);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "UrunYonet";
-            //StartPosition = FormStartPosition.CenterScreen;
             Text = "Ürünleri Yönet";
             ((System.ComponentModel.ISupportInitialize)dataGridViewItems).EndInit();
             ResumeLayout(false);

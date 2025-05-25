@@ -12,7 +12,7 @@ namespace Internet_Kafe_Proje.Database
         {
             using var databaseManager = new DatabaseManager();
 
-            string sql = "SELECT id, username, balance, is_admin FROM users";
+            string sql = "SELECT id, username, balance, is_admin, session_end_time FROM users";
             var resultTable = databaseManager.ExecuteQuery(sql);
 
             var users = new List<Kullanici>();
@@ -24,7 +24,10 @@ namespace Internet_Kafe_Proje.Database
                     Id = Convert.ToInt32(row["id"]),
                     Username = Convert.ToString(row["username"]) ?? "",
                     Balance = Convert.ToDecimal(row["balance"]),
-                    IsAdmin = Convert.ToBoolean(row["is_admin"])
+                    IsAdmin = Convert.ToBoolean(row["is_admin"]),
+                    SessionEndTime = row["session_end_time"] == DBNull.Value
+                    ? (DateTime?)null
+                    : Convert.ToDateTime(row["session_end_time"])
                 };
 
                 users.Add(user);
@@ -81,7 +84,7 @@ namespace Internet_Kafe_Proje.Database
         {
             using var databaseManager = new DatabaseManager();
 
-            string sql = "SELECT id, password, balance, is_admin FROM users WHERE username = @username";
+            string sql = "SELECT id, password, balance, is_admin, session_end_time FROM users WHERE username = @username";
             var parameter = new MySqlParameter("@username", username);
 
             var resultTable = databaseManager.ExecuteQuery(sql, parameter);
@@ -96,6 +99,7 @@ namespace Internet_Kafe_Proje.Database
             decimal balance = Convert.ToDecimal(result["balance"]);
             bool isAdminFromDb = Convert.ToBoolean(result["is_admin"]);
             string? hashedPassword = Convert.ToString(result["password"]);
+
             if (hashedPassword == null)
             {
                 return null;
@@ -103,7 +107,23 @@ namespace Internet_Kafe_Proje.Database
 
             bool passwordCorrect = PasswordHelper.VerifyPassword(hashedPassword, plainPassword);
 
-            return passwordCorrect ? new Kullanici { Id = id, Username = username, Balance = balance, IsAdmin = isAdminFromDb && isAdminLogin } : null;
+            if (!passwordCorrect)
+            {
+                return null;
+            }
+
+            DateTime? sessionEndTime = result["session_end_time"] == DBNull.Value
+                ? (DateTime?)null
+                : Convert.ToDateTime(result["session_end_time"]);
+
+            return new Kullanici
+            {
+                Id = id,
+                Username = username,
+                Balance = balance,
+                IsAdmin = isAdminFromDb && isAdminLogin,
+                SessionEndTime = sessionEndTime
+            };
         }
 
         internal static void DeleteUserById(int id)
@@ -202,5 +222,35 @@ namespace Internet_Kafe_Proje.Database
 
             databaseManager.ExecuteNonQuery(sql, parameters);
         }
+
+        internal static void AddSessionTime(int userId, TimeSpan duration)
+        {
+            using var databaseManager = new DatabaseManager();
+
+            // First, get the current session_end_time from the DB
+            string selectSql = "SELECT session_end_time FROM users WHERE id = @userId";
+            var result = databaseManager.GetSingle(selectSql, new MySqlParameter("@userId", userId));
+
+            DateTime currentEndTime;
+
+            if (result != null && DateTime.TryParse(result.ToString(), out DateTime dbEndTime) && dbEndTime > DateTime.Now)
+            {
+                currentEndTime = dbEndTime;
+            }
+            else
+            {
+                currentEndTime = DateTime.Now;
+            }
+
+            DateTime newEndTime = currentEndTime.Add(duration);
+
+            string updateSql = "UPDATE users SET session_end_time = @newTime WHERE id = @userId";
+
+            databaseManager.ExecuteNonQuery(updateSql,
+                new MySqlParameter("@newTime", newEndTime),
+                new MySqlParameter("@userId", userId)
+            );
+        }
+
     }
 }

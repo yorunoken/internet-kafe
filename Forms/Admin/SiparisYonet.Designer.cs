@@ -18,6 +18,7 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Button buttonBack;
 
         protected override void Dispose(bool disposing)
         {
@@ -43,6 +44,7 @@
             buttonUpdate = new Button();
             buttonClear = new Button();
             buttonRefresh = new Button();
+            buttonBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).BeginInit();
             SuspendLayout();
             // 
@@ -53,7 +55,7 @@
             dataGridViewOrders.Name = "dataGridViewOrders";
             dataGridViewOrders.ReadOnly = true;
             dataGridViewOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewOrders.Size = new Size(537, 427);
+            dataGridViewOrders.Size = new Size(537, 395);
             dataGridViewOrders.TabIndex = 0;
             dataGridViewOrders.SelectionChanged += SelectedDataGrid;
             // 
@@ -95,7 +97,7 @@
             // 
             // checkBoxDelivered
             // 
-            checkBoxDelivered.Location = new Point(700, 314);
+            checkBoxDelivered.Location = new Point(700, 312);
             checkBoxDelivered.Margin = new Padding(4, 3, 4, 3);
             checkBoxDelivered.Name = "checkBoxDelivered";
             checkBoxDelivered.Size = new Size(23, 23);
@@ -166,7 +168,7 @@
             buttonDelete.Margin = new Padding(4, 3, 4, 3);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(128, 46);
-            buttonDelete.TabIndex = 9;
+            buttonDelete.TabIndex = 11;
             buttonDelete.Text = "Sil";
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += DeleteOrder;
@@ -181,7 +183,7 @@
             buttonUpdate.Margin = new Padding(4, 3, 4, 3);
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(128, 46);
-            buttonUpdate.TabIndex = 10;
+            buttonUpdate.TabIndex = 12;
             buttonUpdate.Text = "Güncelle";
             buttonUpdate.UseVisualStyleBackColor = false;
             buttonUpdate.Click += UpdateOrder;
@@ -196,7 +198,7 @@
             buttonClear.Margin = new Padding(4, 3, 4, 3);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(280, 46);
-            buttonClear.TabIndex = 11;
+            buttonClear.TabIndex = 13;
             buttonClear.Text = "Temizle";
             buttonClear.UseVisualStyleBackColor = false;
             buttonClear.Click += ClearFields;
@@ -207,21 +209,34 @@
             buttonRefresh.FlatStyle = FlatStyle.Flat;
             buttonRefresh.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             buttonRefresh.ForeColor = Color.White;
-            buttonRefresh.Location = new Point(35, 473);
+            buttonRefresh.Location = new Point(35, 440);
             buttonRefresh.Margin = new Padding(4, 3, 4, 3);
             buttonRefresh.Name = "buttonRefresh";
             buttonRefresh.Size = new Size(140, 35);
-            buttonRefresh.TabIndex = 12;
+            buttonRefresh.TabIndex = 14;
             buttonRefresh.Text = "Yenile";
             buttonRefresh.UseVisualStyleBackColor = false;
             buttonRefresh.Click += Refresh_Click;
+            // 
+            // buttonBack
+            // 
+            buttonBack.BackColor = Color.Teal;
+            buttonBack.FlatStyle = FlatStyle.Flat;
+            buttonBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            buttonBack.ForeColor = Color.White;
+            buttonBack.Location = new Point(182, 440);
+            buttonBack.Name = "buttonBack";
+            buttonBack.Size = new Size(137, 35);
+            buttonBack.TabIndex = 15;
+            buttonBack.Text = "Geri Dön";
+            buttonBack.UseVisualStyleBackColor = false;
             // 
             // SiparisYonet
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(933, 519);
+            ClientSize = new Size(933, 492);
             Controls.Add(dataGridViewOrders);
             Controls.Add(labelUserId);
             Controls.Add(textBoxUserId);
@@ -237,11 +252,11 @@
             Controls.Add(buttonUpdate);
             Controls.Add(buttonClear);
             Controls.Add(buttonRefresh);
+            Controls.Add(buttonBack);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "SiparisYonet";
-            //StartPosition = FormStartPosition.CenterScreen;
             Text = "Siparişleri Yönet";
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).EndInit();
             ResumeLayout(false);

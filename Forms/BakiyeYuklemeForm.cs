@@ -54,5 +54,11 @@ namespace Internet_Kafe_Proje.Forms
             UpdateMoneyLabel();
             Users.UpdateBalance(user);
         }
+
+        private void ButtonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new AnaSayfa().Show();
+        }
     }
 }

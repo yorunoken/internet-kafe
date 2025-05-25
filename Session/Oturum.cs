@@ -6,6 +6,8 @@
         public required string Username { get; set; }
         public required decimal Balance { get; set; }
         public required bool IsAdmin { get; set; }
+        public DateTime? SessionEndTime { get; set; }
+
     }
 
     internal class Oturum

@@ -2,9 +2,9 @@
 
 namespace Internet_Kafe_Proje.Forms
 {
-    public partial class AnaForm: Form
+    public partial class AnaGirisSecimForm: Form
     {
-        public AnaForm()
+        public AnaGirisSecimForm()
         {
             InitializeComponent();
 

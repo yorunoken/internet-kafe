@@ -13,13 +13,13 @@
         private void Button_MouseEnter(object sender, EventArgs e)
         {
             if (sender is Button btn)
-                btn.BackColor = Color.DarkCyan;
+                btn.BackColor = Color.FromArgb(65, 110, 140);
         }
 
         private void Button_MouseLeave(object sender, EventArgs e)
         {
             if (sender is Button btn)
-                btn.BackColor = Color.FromArgb(47, 79, 79);
+                btn.BackColor = Color.FromArgb(55, 90, 120);
         }
 
         private void GoToUsers(object sender, EventArgs e)
@@ -35,6 +35,11 @@
         private void GoToOrders(object sender, EventArgs e)
         {
             new SiparisYonet().ShowDialog();
+        }
+
+        private void GoBack(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -52,11 +52,11 @@ namespace Internet_Kafe_Proje.Forms
                     return;
                 } else
                 {
-                    var marketForm = new MarketForm();
-                    marketForm.Show();
+                    var anaSayfa = new AnaSayfa();
+                    anaSayfa.Show();
                 }
 
-                    this.Hide();
+                this.Hide();
             }
             catch
             {

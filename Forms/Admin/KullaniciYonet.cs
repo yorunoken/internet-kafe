@@ -45,7 +45,9 @@ namespace Internet_Kafe_Proje.Forms.Admin
             {
                 Users.UserSignup(username, password, balance, isAdmin);
                 MessageBoxes.Success("Kullanıcı oluşturuldu.");
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Console.Write(ex.ToString());
                 MessageBoxes.Error(ex.Message);
             }
@@ -97,6 +99,44 @@ namespace Internet_Kafe_Proje.Forms.Admin
             textBoxBalance.Text = string.Empty;
             checkBoxIsAdmin.Checked = false;
             dataGridViewUsers.ClearSelection();
+        }
+
+        private void ButtonAddTime_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewUsers.SelectedRows.Count == 0)
+            {
+                MessageBoxes.Error("Lütfen süre eklemek için bir kullanıcı seçin.");
+                return;
+            }
+
+            if (!int.TryParse(textBoxExtraTime.Text, out int extraMinutes) || extraMinutes <= 0)
+            {
+                MessageBoxes.Error("Lütfen geçerli bir ekstra süre (dakika) girin.");
+                return;
+            }
+
+            var selectedRow = dataGridViewUsers.SelectedRows[0];
+            int userId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+
+            try
+            {
+                // Assuming you have a method in your Users class to add time, like this:
+                Users.AddSessionTime(userId, TimeSpan.FromMinutes(extraMinutes));
+                MessageBoxes.Success($"Kullanıcının süresine {extraMinutes} dakika eklendi.");
+
+                // Optionally refresh user list or selected data
+                LoadUsers();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxes.Error("Süre eklenirken hata oluştu: " + ex.Message);
+            }
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new AdminDashboard().Show();
         }
     }
 }

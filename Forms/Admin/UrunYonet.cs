@@ -31,7 +31,7 @@ namespace Internet_Kafe_Proje.Forms.Admin
         {
             string name = textBoxItemName.Text;
             decimal price = Convert.ToDecimal(textBoxPrice.Text);
- 
+
             Items.InsertItem(name, price);
             LoadItems();
             MessageBoxes.Success("Ürün eklendi.");
@@ -80,6 +80,11 @@ namespace Internet_Kafe_Proje.Forms.Admin
         private void Refresh_Click(object sender, EventArgs e)
         {
             LoadItems();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
