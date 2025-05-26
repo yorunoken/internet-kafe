@@ -44,7 +44,7 @@ namespace Internet_Kafe_Proje.Forms
         {
             if (sessionEndTime == null)
             {
-                LabelTimeLeft.Text = "Kalan Süre: 00:00:00";
+                LabelTimeLeft.Text = "Süre doldu!";
                 return;
             }
 
@@ -84,7 +84,9 @@ namespace Internet_Kafe_Proje.Forms
 
         private void ButtonSignOut_Click(object sender, EventArgs e)
         {
-            this.Close();
+            new AnaGirisSecimForm().Show();
+            this.Hide();
+            Oturum.AktifKullanici = null;
         }
     }
 

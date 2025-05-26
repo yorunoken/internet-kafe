@@ -50,7 +50,8 @@ namespace Internet_Kafe_Proje.Forms
                 {
                     ShowError("Admin olarak giriş yapamazsınız çünkü size Admin yetkisi verilmemiş.");
                     return;
-                } else
+                }
+                else
                 {
                     var anaSayfa = new AnaSayfa();
                     anaSayfa.Show();
@@ -70,6 +71,12 @@ namespace Internet_Kafe_Proje.Forms
             labelError.Text = message;
             labelError.Visible = true;
             return;
+        }
+
+        private void ButtonBack_Click(object sender, EventArgs e)
+        {
+            new AnaGirisSecimForm().Show();
+            this.Hide();
         }
     }
 }

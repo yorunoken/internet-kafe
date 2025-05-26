@@ -32,6 +32,10 @@ namespace Internet_Kafe_Proje.Forms.Admin
         // Yeni ürün ekler
         private void CreateItem(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxItemName.Text)) {
+                MessageBoxes.Error("Lütfen bütün kutucukları doldurun");
+                return;
+            }
             string name = textBoxItemName.Text;
             decimal price = Convert.ToDecimal(textBoxPrice.Text);
 

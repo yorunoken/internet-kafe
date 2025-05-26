@@ -1,3 +1,5 @@
+using Internet_Kafe_Proje.Session;
+
 namespace Internet_Kafe_Proje.Forms.Admin
 {
     public partial class AdminDashboard : Form
@@ -45,7 +47,9 @@ namespace Internet_Kafe_Proje.Forms.Admin
         // Çıkış yapar
         private void GoBack(object sender, EventArgs e)
         {
-            this.Close();
+            new AnaGirisSecimForm().Show();
+            this.Hide();
+            Oturum.AktifKullanici = null;
         }
     }
 }
